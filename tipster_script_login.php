@@ -75,12 +75,13 @@ function _tsl_helper_custom_style() {
         color: "._tss_helper_custom_color($custom_colors, 'tsl_citc', '#111')."!important;
     }
     /* Submit button */
-    .tsl_login_css .modal-body #tsl_login_submit {
+    .tsl_login_css .modal-body #tsl_login_submit, .tsl_login_css .modal-body #tsl_register_submit {
         background-color: "._tss_helper_custom_color($custom_colors, 'tsl_sbbgc', '#0170B9').";
         border-color: "._tss_helper_custom_color($custom_colors, 'tsl_sbbc', '#0170B9').";
         color: "._tss_helper_custom_color($custom_colors, 'tsl_sbtc', '#fff').";
     }
-    .tsl_login_css .modal-body #tsl_login_submit:hover, .tsl_login_css .modal-body #tsl_login_submit:visited {
+    .tsl_login_css .modal-body #tsl_login_submit:hover, .tsl_login_css .modal-body #tsl_login_submit:visited, 
+    .tsl_login_css .modal-body #tsl_register_submit:hover, .tsl_login_css .modal-body #tsl_register_submit:visited {
         background-color: "._tss_helper_custom_color($custom_colors, 'tsl_sbhbgc', '#3a3a3a').";
         border-color: "._tss_helper_custom_color($custom_colors, 'tsl_sbhbc', '#3a3a3a').";
         color: "._tss_helper_custom_color($custom_colors, 'tsl_sbhtc', '#fff').";
@@ -89,6 +90,7 @@ function _tsl_helper_custom_style() {
 }
 /* END Custom colors */
 
+/* Login/Register */
 function tsl_login_form_modal() {
     $args = [
         "echo"      => false,
