@@ -103,7 +103,7 @@ function tsl_login_form_modal() {
                 $data .= '<div class="modal-header">';
                     $data .= '<h4 class="modal-title">';
                         $data .= '<i class="fa fa-user"></i>&nbsp;';
-                        $data .= esc_html__("User Login", "tipster_script_login");           
+                        $data .= esc_html__("Sign in", "tipster_script_login");           
                     $data .= '</h4>';
                     $data .= '<button type="button" class="btn-close btn-close-dark" data-bs-dismiss="modal" aria-label="Close"></button>';
                 $data .= "</div>";
@@ -128,7 +128,7 @@ function tsl_register_form_modal() {
                 $data .= '<div class="modal-header">';
                     $data .= '<h4 class="modal-title">';
                         $data .= '<i class="fa fa-user-plus"></i>&nbsp;';
-                        $data .= esc_html__("User Register", "tipster_script_login");           
+                        $data .= esc_html__("Sign up", "tipster_script_login");           
                     $data .= '</h4>';
                     $data .= '<button type="button" class="btn-close btn-close-dark" data-bs-dismiss="modal" aria-label="Close"></button>';
                 $data .= "</div>";
