@@ -5,7 +5,7 @@ class TSL_Admin {
     }
 
     function tsl_admin_menu() {
-        add_menu_page('Tipster script Login', 'Tipster script Login', "manage_options", 'tipster_script_login', array($this, 'tsl_display'));
+        add_menu_page('TS Login', 'TS Login', "manage_options", 'tipster_script_login', array($this, 'tsl_display'), 'dashicons-lock');
         add_submenu_page('tipster_script_login', esc_html__('Config', "tipster_script_login"), esc_html__('Config',"tipster_script_login"), "manage_options", 'tsl_config', array($this, 'tsl_display'));
     }
 

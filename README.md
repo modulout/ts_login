@@ -4,11 +4,10 @@
 
 1. Upload the ts_login directory to the /wp-content/plugins/ directory or install through WordPress admin installer (wp-admin -> plugins -> add new)
 2. Activate the plugin through the 'plugins' menu in WordPress.
-3. Edit colors setting in wp-admin -> Tipster Script -> configuration -> style*
-
-*for now ts_login plugin is working only with Tipster script plugin. We are working hard to make separate plugin to work without Tispter script.
+3. Edit colors setting in wp-admin -> TS Login -> config
 
 ## Usage
 
 ## Credits
 
+[Modulout](https://www.modulout.com)
