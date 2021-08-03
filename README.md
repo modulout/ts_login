@@ -10,4 +10,4 @@
 
 ## Credits
 
-[Modulout](https://www.modulout.com)
+![Modulout logo](https://www.modulout.com/wp-content/uploads/2019/04/favicon-1.png) [Modulout](https://www.modulout.com)
