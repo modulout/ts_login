@@ -1,5 +1,8 @@
 # Ts login popup - WordPress plugin
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT) [![version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/modulout/ts_login)
+
+With the TS login plugin, your users can log in or/and register from the front page (not needed to go to wp-admin anymore). A simple widget is added, but you can add a class for login and a class for registration on any website element. The plugin is working with the latest WordPress version and is fully customizable. You can change colors in wp-admin to make it like your brand.
+
 ## Installation
 
 1. Upload the ts_login directory to the /wp-content/plugins/ directory or install through WordPress admin installer (wp-admin -> plugins -> add new)
@@ -10,4 +13,4 @@
 
 ## Credits
 
-![Modulout logo](https://www.modulout.com/wp-content/uploads/2019/04/favicon-1.png) [Modulout](https://www.modulout.com)
+[Modulout](https://www.modulout.com)
