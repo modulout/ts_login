@@ -17,18 +17,26 @@ You can use the already prepared widget TS - login form which will add login and
 
 #### Use login class
 
-You can use custom class on any element on your website. In this case you need to add: 
+You can use a custom class on any element on your website. In this case, you need to add:  
 ```html
 js--tsl-login-popup
 ```
 
 #### Use register class
 
-You can use custom class on any element on your website. In this case you need to add: 
+You can use a custom class on any element on your website. In this case, you need to add:  
 ```html
 js--tsl-register-popup
 ```
 
+## TO-DO
+
+- [x] Make a standalone version
+- [] Logout from front page
+- [] Different style options for login/register popup
+- [] Options to change icons or disable them
+- [] Upload to WordPress directory
+
 ## Credits
 
-[Modulout](https://www.modulout.com)
+:heart: [Modulout](https://www.modulout.com)
