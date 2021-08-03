@@ -1,7 +1,9 @@
 # Ts login popup - WordPress plugin
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT) [![version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/modulout/ts_login)
 
-With the TS login plugin, your users can log in or/and register from the front page (not needed to go to wp-admin anymore). A simple widget is added, but you can add a class for login and a class for registration on any website element. The plugin is working with the latest WordPress version and is fully customizable. You can change colors in wp-admin to make it like your brand.
+With the TS login plugin, your users can log in or/and register from the front page (not needed to go to wp-admin anymore). A simple widget is added, but you can add a class for login and a class for registration on any website element. The plugin is working with the latest WordPress version and is fully customizable. You can change colors in wp-admin to have your website look-alike feel.
+
+Bootstrap library and Font-Awesome library are included.
 
 ## Installation
 
@@ -10,6 +12,22 @@ With the TS login plugin, your users can log in or/and register from the front p
 3. Edit colors setting in wp-admin -> TS Login -> config
 
 ## Usage
+
+You can use the already prepared widget TS - login form which will add login and register options (if users are not already logged in). In case the user is logged in it will be written his username (instead of login / register text).
+
+#### Use login class
+
+You can use custom class on any element on your website. In this case you need to add: 
+```html
+js--tsl-login-popup
+```
+
+#### Use register class
+
+You can use custom class on any element on your website. In this case you need to add: 
+```html
+js--tsl-register-popup
+```
 
 ## Credits
 

@@ -3,8 +3,8 @@ class Tsl_login_register extends WP_Widget {
     public function __construct() {
         parent::__construct(
             'Tsl_login_register',
-            'Tipster script - Login form',
-            array('description' => __('Tipster script - Login form', "tipster_script_login"))
+            'TS - Login form',
+            array('description' => __('TS - Login form', "tipster_script_login"))
         );
     }
 
