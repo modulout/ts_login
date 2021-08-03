@@ -39,4 +39,4 @@ js--tsl-register-popup
 
 ## Credits
 
-:heart: [Modulout](https://www.modulout.com)
+Made with :heart: by [Modulout](https://www.modulout.com)
