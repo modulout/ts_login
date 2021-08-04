@@ -19,13 +19,6 @@ function tsl_load_textdomain() {
 define("TSL_URL", plugin_dir_url(__FILE__));
 define("TSL_PATH", plugin_dir_path(__FILE__));
 
-/* Include files */
-include_once TSL_PATH."php/TSL_Admin.php";
-$tsl_admin = new TSL_Admin();
-include_once TSL_PATH."php/Tsl_login_register.php";
-include_once TSL_PATH."php/tsl_ajax.php";
-/* END Include files */
-
 /* Add css/js to admin area */
 function tsl_admin_style_js() {
     wp_register_script("tsl_colorpicker", TSL_URL.'assets/js/tsl_colorpicker.js', array('wp-color-picker'), false, true);
@@ -54,6 +47,13 @@ function tsl_include_style_script() {
     } 
 }
 add_action('wp_enqueue_scripts', 'tsl_include_style_script');
+
+/* Include files */
+include_once TSL_PATH."php/TSL_Admin.php";
+$tsl_admin = new TSL_Admin();
+include_once TSL_PATH."php/Tsl_login_register.php";
+include_once TSL_PATH."php/tsl_ajax.php";
+/* END Include files */
 
 /* Custom colors */
 function _tsl_helper_custom_color($colors, $color_name, $default_color) {
@@ -95,6 +95,18 @@ function _tsl_helper_custom_style() {
         background-color: "._tsl_helper_custom_color($custom_colors, 'tsl_sbhbgc', '#3a3a3a').";
         border-color: "._tsl_helper_custom_color($custom_colors, 'tsl_sbhbc', '#3a3a3a').";
         color: "._tsl_helper_custom_color($custom_colors, 'tsl_sbhtc', '#fff').";
+    }
+    .tsl_login_form_header__logged-dd {
+        background-color: #fff;
+    }
+    .tsl_login_form_header__logged-dd-icon  {
+        color: #fff;
+    }
+    .tsl_login_form_header__logged-dd-item {
+        color: #000;
+    }
+    .tsl_login_form_header__logged-dd-item:hover {
+        color: #333;
     }
     ";
 }

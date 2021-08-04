@@ -16,24 +16,28 @@ class Tsl_login_register extends WP_Widget {
         extract($args, EXTR_SKIP);
         echo $before_widget;
         ?>
-        <div class="tss_login_form_header">
+        <div class="tsl_login_form_header">
         <?php
         if(is_user_logged_in()) :
             $current_user = wp_get_current_user();
             ?>
-            <span class="tss_login_form_header__logged">
+            <span class="tsl_login_form_header__logged js--tsl-logged-show">
                 <i class="fa fa-user"></i>&nbsp;
                 <?php echo $current_user->display_name; ?>
+                <ul class="tsl_login_form_header__logged-dd">
+                    <i class="fa fa-sort-up tsl_login_form_header__logged-dd-icon"></i>         
+                    <li class="tsl_login_form_header__logged-dd-item"><?php esc_html_e("Logout", "tipster_script_login"); ?></li>
+                </ul>
             </span>
             <?php
         else : 
             ?>
-            <span class="tss_login_form_header__login js--tsl-login-popup">
+            <span class="tsl_login_form_header__login js--tsl-login-popup">
                 <i class="fa fa-lock"></i>&nbsp;
                 <?php esc_attr_e("Login", "tipster_script_login"); ?>
             </span>
-            <span class="tss_login_form_header__separator">&nbsp;/&nbsp;</span>
-            <span class="tss_login_form_header__register js--tsl-register-popup">
+            <span class="tsl_login_form_header__separator">&nbsp;/&nbsp;</span>
+            <span class="tsl_login_form_header__register js--tsl-register-popup">
                 <i class="fa fa-user-plus"></i>&nbsp;
                 <?php esc_attr_e("Register", "tipster_script_login"); ?>
             </span>       

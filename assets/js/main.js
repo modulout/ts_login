@@ -7,6 +7,14 @@ jQuery(function($) {
         $('.tsl_register_modal').modal('show');
     });
 
+    $(".js--tsl-logged-show").on("click", function(){
+        var logout_dd = $(".tsl_login_form_header__logged-dd");
+        if(logout_dd.is(":hidden")) {
+            logout_dd.css("display", "table");
+        } else {
+            logout_dd.hide();
+        }
+    });
     $(".tsl_login_modal #user_login, .tsl_login_modal #user_pass").on("focusin", function(){
         $('.tsl_login_modal .tsl_form_error').hide();
         $(".tsl_login_modal #user_login").removeAttr("style");

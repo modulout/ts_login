@@ -20,10 +20,36 @@
     line-height: 1.5;
 }
 
-.tss_login_form_header__login, .tss_login_form_header__register {
+.tsl_login_form_header__login, .tsl_login_form_header__register, .tsl_login_form_header__logged {
     cursor: pointer;
 }
 
 .tsl_login_css .tsl_form_error, .tsl_login_css .tsl_register_success {
     display: none;
+}
+.tsl_login_form_header__logged-dd {
+    display: none;
+    list-style: none;
+    margin: 0;
+    min-width: 150px;   
+    padding: 0 0 5px 0;
+    position: relative;
+    text-align: center;
+    /*visibility: hidden;*/
+    white-space: nowrap;
+}
+.tsl_login_form_header__logged-dd-icon {
+    font-size: 20px;
+    margin-right: 0.65em;
+    position: absolute;
+    right: 2.7em;
+    top: -.4em;
+}
+.tsl_login_form_header__logged-dd-item {
+    box-shadow: 1px 1px 15px #79797924;
+    display: block;
+    font-size: 14px;
+    margin: 0;
+    padding-top: 10px;
+    position: relative;
 }
