@@ -21,7 +21,8 @@ define("TSL_PATH", plugin_dir_path(__FILE__));
 
 /* Add css/js to admin area */
 function tsl_admin_style_js() {
-    wp_register_script("tsl_colorpicker", TSL_URL.'assets/js/tsl_colorpicker.js', array('wp-color-picker'), false, true);
+    wp_register_style("tsl_config", TSL_URL.'assets/css/main_admin.css');
+    wp_register_script("tsl_config", TSL_URL.'assets/js/tsl_config.js', array('wp-color-picker'), false, true);
 }
 add_action('admin_enqueue_scripts', 'tsl_admin_style_js');
 
@@ -97,16 +98,26 @@ function _tsl_helper_custom_style() {
         color: "._tsl_helper_custom_color($custom_colors, 'tsl_sbhtc', '#fff').";
     }
     .tsl_login_form_header__logged-dd {
-        background-color: #fff;
+        background-color: "._tsl_helper_custom_color($custom_colors, 'tsl_ddbgc', '#fff').";
     }
     .tsl_login_form_header__logged-dd-icon  {
-        color: #fff;
+        color: "._tsl_helper_custom_color($custom_colors, 'tsl_ddbgc', '#fff').";
     }
-    .tsl_login_form_header__logged-dd-item {
-        color: #000;
+    .tsl_login_form_header__logged-dd-item a, .tsl_login_form_header__logged-dd-item .tsl_logout_icon {
+        color: "._tsl_helper_custom_color($custom_colors, 'tsl_ddtc', '#000').";
     }
-    .tsl_login_form_header__logged-dd-item:hover {
-        color: #333;
+    .tsl_login_form_header__logged-dd-item a:hover {
+        color: "._tsl_helper_custom_color($custom_colors, 'tsl_ddhtc', '#333').";
+    }
+    .tsl_login_form_header__logged a.tsl_login_form_header__logged-btn {
+        background-color: "._tsl_helper_custom_color($custom_colors, 'tsl_bbgc', '#565e64').";
+        border-color: "._tsl_helper_custom_color($custom_colors, 'tsl_bbc', '#51585e').";
+        color: "._tsl_helper_custom_color($custom_colors, 'tsl_ddbgc', '#fff').";
+    }
+    .tsl_login_form_header__logged a.tsl_login_form_header__logged-btn:hover, .tsl_login_form_header__logged a.tsl_login_form_header__logged-btn:visited {
+        background-color: "._tsl_helper_custom_color($custom_colors, 'tsl_bhbgc', '#5c636a').";
+        border-color: "._tsl_helper_custom_color($custom_colors, 'tsl_bhbc', '#565e64').";
+        color: "._tsl_helper_custom_color($custom_colors, 'tsl_bhtc', '#fff').";
     }
     ";
 }

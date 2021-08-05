@@ -20,14 +20,23 @@ class Tsl_login_register extends WP_Widget {
         <?php
         if(is_user_logged_in()) :
             $current_user = wp_get_current_user();
+            $logout_value = get_option("tsl_logout_option", 1);
             ?>
             <span class="tsl_login_form_header__logged js--tsl-logged-show">
-                <i class="fa fa-user"></i>&nbsp;
-                <?php echo $current_user->display_name; ?>
-                <ul class="tsl_login_form_header__logged-dd">
-                    <i class="fa fa-sort-up tsl_login_form_header__logged-dd-icon"></i>         
-                    <li class="tsl_login_form_header__logged-dd-item"><?php esc_html_e("Logout", "tipster_script_login"); ?></li>
-                </ul>
+                <?php if($logout_value == 1) : ?>
+                    <a href="<?php echo wp_logout_url(home_url()); ?>" class="tsl_login_form_header__logged-btn btn btn-secondary">
+                        <i class="fa fa-sign-out"></i>&nbsp;<?php esc_html_e("Log out", "tipster_script_login"); ?>
+                    </a>
+                <?php else : ?>
+                    <i class="fa fa-user"></i>&nbsp;<?php echo $current_user->display_name; ?>
+                    <ul class="tsl_login_form_header__logged-dd">
+                        <i class="fa fa-sort-up tsl_login_form_header__logged-dd-icon"></i>         
+                        <li class="tsl_login_form_header__logged-dd-item">
+                            <i class="fa fa-sign-out tsl_logout_icon"></i>&nbsp;
+                            <a href="<?php echo wp_logout_url(home_url()); ?>"> <?php esc_html_e("Log out", "tipster_script_login"); ?></a>
+                        </li>
+                    </ul>
+                <?php endif; ?>
             </span>
             <?php
         else : 

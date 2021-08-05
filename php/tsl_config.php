@@ -1,7 +1,8 @@
 <?php
 global $tsl_admin;
+wp_enqueue_style('tsl_config');
 wp_enqueue_style('wp-color-picker');
-wp_enqueue_script("tsl_colorpicker"); 
+wp_enqueue_script("tsl_config"); 
 
 if(isset($_GET['save_config'])) {
     $tsl_admin->tsl_save_config();
@@ -14,6 +15,57 @@ if(isset($_GET['save_config'])) {
             <form action="admin.php?page=tsl_config&save_config" method="post">
                 <table class="form-table">
                     <tbody>
+                        <tr>
+                            <th>
+                                <?php esc_html_e("Log out option", "tipster_script_login"); ?>
+                            </th>
+                            <td>
+                                <select name="tsl_logout_option" id="tsl_logout_option">
+                                    <option value="1"<?php echo (get_option("tsl_logout_option") == 1) ? ' selected' : ''; ?>><?php esc_html_e("Button", "tipster_script_login"); ?></option>
+                                    <option value="2"<?php echo (get_option("tsl_logout_option") == 2) ? ' selected' : ''; ?>><?php esc_html_e("Dropdown", "tipster_script_login"); ?></option>
+                                </select>
+                                <div class='item tsl_logout_1'>
+                                    <div class="tsl_custom_colorpicker">
+                                        <label for="tsl_bbgc"><?php esc_html_e("Button background color", "tipster_script_login"); ?></label><br>
+                                        <input type="text" class="tsl_colorpicker" name="tsl_bbgc" id="tsl_bbgc" value="<?php echo get_option("tsl_bbgc", "#565e64"); ?>" data-default-color="#565e64" />
+                                    </div>
+                                    <div class="tsl_custom_colorpicker">
+                                        <label for="tsl_btc"><?php esc_html_e("Button text color", "tipster_script_login"); ?></label><br>
+                                        <input type="text" class="tsl_colorpicker" name="tsl_btc" id="tsl_btc" value="<?php echo get_option("tsl_btc", "#fff"); ?>" data-default-color="#fff" />
+                                    </div>
+                                    <div class="tsl_custom_colorpicker">
+                                        <label for="tsl_bbc"><?php esc_html_e("Button border color", "tipster_script_login"); ?></label><br>
+                                        <input type="text" class="tsl_colorpicker" name="tsl_bbc" id="tsl_bbc" value="<?php echo get_option("tsl_bbc", "#51585e"); ?>" data-default-color="#51585e" />
+                                    </div>
+                                    <div class="tsl_custom_colorpicker">
+                                        <label for="tsl_bhbgc"><?php esc_html_e("Button hover background color", "tipster_script_login"); ?></label><br>
+                                        <input type="text" class="tsl_colorpicker" name="tsl_bhbgc" id="tsl_bhbgc" value="<?php echo get_option("tsl_bhbgc", "#5c636a"); ?>" data-default-color="#5c636a" />
+                                    </div>
+                                    <div class="tsl_custom_colorpicker">
+                                        <label for="tsl_bhtc"><?php esc_html_e("Button hover text color", "tipster_script_login"); ?></label><br>
+                                        <input type="text" class="tsl_colorpicker" name="tsl_bhtc" id="tsl_bhtc" value="<?php echo get_option("tsl_bhtc", "#fff"); ?>" data-default-color="#fff" />
+                                    </div>
+                                    <div class="tsl_custom_colorpicker">
+                                        <label for="tsl_bhbc"><?php esc_html_e("Button hover border color", "tipster_script_login"); ?></label><br>
+                                        <input type="text" class="tsl_colorpicker" name="tsl_bhbc" id="tsl_bhbc" value="<?php echo get_option("tsl_bhbc", "#565e64"); ?>" data-default-color="#565e64" />
+                                    </div>
+                                </div>
+                                <div class='item tsl_logout_2'>
+                                    <div class="tsl_custom_colorpicker">
+                                        <label for="tsl_ddbgc"><?php esc_html_e("Dropdown background color", "tipster_script_login"); ?></label><br>
+                                        <input type="text" class="tsl_colorpicker" name="tsl_ddbgc" id="tsl_ddbgc" value="<?php echo get_option("tsl_ddbgc", "#fff"); ?>" data-default-color="#fff" />
+                                    </div>
+                                    <div class="tsl_custom_colorpicker">
+                                        <label for="tsl_ddtc"><?php esc_html_e("Dropdown text color", "tipster_script_login"); ?></label><br>
+                                        <input type="text" class="tsl_colorpicker" name="tsl_ddtc" id="tsl_ddtc" value="<?php echo get_option("tsl_ddtc", "#000"); ?>" data-default-color="#000" />
+                                    </div>
+                                    <div class="tsl_custom_colorpicker">
+                                        <label for="tsl_ddhtc"><?php esc_html_e("Dropdown hover text color", "tipster_script_login"); ?></label><br>
+                                        <input type="text" class="tsl_colorpicker" name="tsl_ddhtc" id="tsl_ddhtc" value="<?php echo get_option("tsl_ddhtc", "#333"); ?>" data-default-color="#333" />
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
                         <tr class="tsl_custom_colors">
                             <th colspan="2">
                                 <div class="ts-admin-grid">

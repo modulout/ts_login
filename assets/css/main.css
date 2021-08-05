@@ -53,3 +53,9 @@
     padding-top: 10px;
     position: relative;
 }
+.tsl_login_form_header__logged-dd-item a {
+    text-decoration: none;
+}
+.tsl_login_form_header__logged-dd-item a:hover {
+    text-decoration: underline;
+}
