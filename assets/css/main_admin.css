@@ -3,3 +3,6 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 }
+.tsl_form_img, .tsl_logout_1, .tsl_logout_2 {
+    margin-top: 10px;
+}

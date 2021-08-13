@@ -59,3 +59,21 @@
 .tsl_login_form_header__logged-dd-item a:hover {
     text-decoration: underline;
 }
+/* Flex img on left */
+.tsl_wrapper {
+    display: flex;
+}
+.tsl_inside {
+    width: 40%;
+}
+.tsl_inside_content {
+    padding: 15px;
+    width: 60%
+}
+.tsl_inside img {
+    border-top-left-radius: .3rem;
+    border-bottom-left-radius: .3rem;
+    min-height: 100%;
+    min-width: 100%;
+    object-fit: cover;
+}

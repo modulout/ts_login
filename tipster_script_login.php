@@ -13,7 +13,7 @@ if(!defined('WPINC')) {
 /* Language text domain */
 add_action( 'plugins_loaded', 'tsl_load_textdomain' );
 function tsl_load_textdomain() {
-  load_plugin_textdomain( 'tipster_script_login', false, plugin_basename( dirname( __FILE__ ) ) . '/languages' );
+    load_plugin_textdomain( 'tipster_script_login', false, plugin_basename( dirname( __FILE__ ) ) . '/languages' );
 }
 
 define("TSL_URL", plugin_dir_url(__FILE__));
@@ -129,64 +129,15 @@ function tsl_login_form_modal() {
         "echo"      => false,
         "id_submit" => "tsl_login_submit"
     ];
-    $data = "";
-    $data .= '<div class="tsl_login_css tsl_login_modal modal fade" tabindex="-1" role="dialog">';
-        $data .= '<div class="modal-dialog modal-dialog-centered">';
-            $data .= '<div class="modal-content">';
-                $data .= '<div class="modal-header">';
-                    $data .= '<h4 class="modal-title">';
-                        $data .= '<i class="fa fa-user"></i>&nbsp;';
-                        $data .= esc_html__("Sign in", "tipster_script_login");           
-                    $data .= '</h4>';
-                    $data .= '<button type="button" class="btn-close btn-close-dark" data-bs-dismiss="modal" aria-label="Close"></button>';
-                $data .= "</div>";
-                $data .= '<div class="modal-body">';
-                    $data .= wp_login_form($args);
-                    $data .= wp_nonce_field('ajax-login-nonce', 'security', true, false);
-                    $data .= "<p class='tsl_form_error alert alert-danger' role='alert'></p>";
-                    $data .= "<p class='tsl_register_success alert alert-success' role='alert'></p>";
-                $data .= "</div>";
-            $data .= "</div>";
-        $data .= "</div>";
-    $data .= "</div>";
-    echo $data;
+
+    $template_id = get_option("tsl_form_template", "1");
+
+    include TSL_PATH."php/templates/login".$template_id.".php";
 }
 add_action("wp_footer", "tsl_login_form_modal");
 
 function tsl_register_form_modal() {
-    $data = "";
-    $data .= '<div class="tsl_login_css tsl_register_modal modal fade" tabindex="-1" role="dialog">';
-        $data .= '<div class="modal-dialog modal-dialog-centered">';
-            $data .= '<div class="modal-content">';
-                $data .= '<div class="modal-header">';
-                    $data .= '<h4 class="modal-title">';
-                        $data .= '<i class="fa fa-user-plus"></i>&nbsp;';
-                        $data .= esc_html__("Sign up", "tipster_script_login");           
-                    $data .= '</h4>';
-                    $data .= '<button type="button" class="btn-close btn-close-dark" data-bs-dismiss="modal" aria-label="Close"></button>';
-                $data .= "</div>";
-                $data .= '<div class="modal-body">';
-                    $data .= '<p class="tsl_register">';
-                        $data .= '<label for="tsl_username">'.esc_html__("Username", "tipster_script_login").'*</label>';
-                        $data .= '<input type="text" id="tsl_username" class="input">';
-                    $data .= '</p>';
-                    $data .= '<p class="tsl_register">';
-                        $data .= '<label for="tsl_email">'.esc_html__("Email", "tipster_script_login").'*</label>';
-                        $data .= '<input type="text" id="tsl_email" class="input">';
-                    $data .= '</p>';
-                    $data .= '<p class="tsl_register">';
-                        $data .= '<label for="tsl_password">'.esc_html__("Password", "tipster_script_login").'*</label>';
-                        $data .= '<input type="password" id="tsl_password" class="input">';
-                    $data .= '</p>';
-                    $data .= '<p class="tsl-register-submit">';
-                        $data .= '<input type="submit" id="tsl_register_submit" class="button button-primary" value="'.esc_html__("Register", "tipster_script_login").'">';
-                    $data .= '</p>';
-                    $data .= wp_nonce_field('ajax-register-nonce', 'rsecurity', true, false);
-                    $data .= "<p class='tsl_form_error alert alert-danger' role='alert'></p>";
-                $data .= "</div>";
-            $data .= "</div>";
-        $data .= "</div>";
-    $data .= "</div>";
-    echo $data;
+    $template_id = get_option("tsl_form_template", "1");
+    include TSL_PATH."php/templates/register".$template_id.".php";
 }
 add_action("wp_footer", "tsl_register_form_modal");

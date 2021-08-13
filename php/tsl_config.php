@@ -4,6 +4,12 @@ wp_enqueue_style('tsl_config');
 wp_enqueue_style('wp-color-picker');
 wp_enqueue_script("tsl_config"); 
 
+$form_templates_arr = [
+    1 => esc_html__("Basic", "tipster_script_login"),
+    2 => esc_html__("Image on top", "tipster_script_login"),
+    3 => esc_html__("Image on left side", "tipster_script_login"),
+];
+
 if(isset($_GET['save_config'])) {
     $tsl_admin->tsl_save_config();
 }
@@ -15,6 +21,31 @@ if(isset($_GET['save_config'])) {
             <form action="admin.php?page=tsl_config&save_config" method="post">
                 <table class="form-table">
                     <tbody>
+                        <!-- Login/Register style -->
+                        <tr>
+                            <th>
+                                <?php esc_html_e("Login/Register style", "tipster_script_login"); ?>
+                            </th>
+                            <td>
+                                <select name="tsl_form_template" id="tsl_form_template">
+                                    <?php foreach($form_templates_arr as $key => $item) : ?>
+                                        <?php 
+                                            $selected = "";
+                                            if(get_option("tsl_form_template", "1") == $key) {
+                                                $selected = " selected";
+                                            }
+                                        ?>
+                                        <option value="<?php echo $key; ?>"<?php echo $selected; ?>><?php echo $item; ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                                <div class=tsl_form_img>
+                                    <label for=""><?php esc_html_e("Image", "tipster_script_login"); ?></label><br>
+                                    <input id="tsl_form_image" type="text" name="tsl_form_image" value="<?php echo get_option("tsl_form_image", ""); ?>" />
+                                    <input id="_btn" class="upload_image_button button button-primary" type="button" value="Upload" />
+                                </div>
+                            </td>
+                        </tr>
+                        <!-- Logout option -->
                         <tr>
                             <th>
                                 <?php esc_html_e("Log out option", "tipster_script_login"); ?>
@@ -135,3 +166,6 @@ if(isset($_GET['save_config'])) {
         </div>
     </div>
 </div>
+<?php
+wp_enqueue_script('tsl-upload', TSL_URL.'assets/js/upload_image.js', array('jquery', 'media-upload', 'thickbox'));
+wp_enqueue_style('thickbox');
