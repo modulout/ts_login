@@ -33,7 +33,8 @@ js--tsl-register-popup
 
 - [x] Make a standalone version
 - [x] Logout from front page
-- [ ] Different style options for login/register popup
+- [x] Different style options for login/register popup
+- [ ] Add captcha option
 - [ ] Options to change icons or disable them
 - [ ] Upload to WordPress directory
 
