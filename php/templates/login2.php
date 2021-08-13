@@ -10,6 +10,9 @@
                     <i class="fa fa-user"></i>&nbsp;
                     <?php esc_html_e("Sign in", "tipster_script_login"); ?>        
                 </h4>
+                <?php if($recaptcha_status == "1") : ?>
+                    <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
+                <?php endif; ?>
                 <button type="button" class="btn-close btn-close-dark" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">

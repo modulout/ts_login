@@ -27,13 +27,22 @@ function tsl_admin_style_js() {
 add_action('admin_enqueue_scripts', 'tsl_admin_style_js');
 
 function tsl_include_style_script() {
+    //Google recaptcha
+    $site_key = get_option("tsl_recaptcha_site_key", "");
+    $recaptcha_status = get_option("tsl_recaptcha_enable", "0");
+
     wp_enqueue_style('bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css');
     wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
+    if($recaptcha_status == "1") {
+        wp_enqueue_script("recaptcha", 'https://www.google.com/recaptcha/api.js?render='.$site_key);
+    }
     wp_enqueue_script('bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js', array('jquery'));
     wp_enqueue_style('tsl-main', TSL_URL.'assets/css/main.css');
     wp_enqueue_script("tsl-main", TSL_URL.'assets/js/main.js', array('jquery'));
     wp_localize_script('tsl-main', 'tsl_main', [
         'ajaxurl'          => admin_url('admin-ajax.php'),
+        'site_key'         => $site_key,
+        'recaptcha_status' => $recaptcha_status,
         'fields_empty'     => esc_html__("The username or password field is empty!", "tipster_script_login"),
         'fields_wrong'     => esc_html__("Incorrect username or password please try again!", "tipster_script_login"),
         'rfields_empty'    => esc_html__("The username or e-mail or password field is empty!", "tipster_script_login"),
@@ -41,6 +50,7 @@ function tsl_include_style_script() {
         'email_exists'     => esc_html__("The email already exists!", "tipster_script_login"),
         'register_fail'    => esc_html__("Registration failed! Please try again.", "tipster_script_login"),
         'register_success' => esc_html__("Registration was successful. You can log in.", "tipster_script_login"),
+        'recaptcha_error'  => esc_html__("Something went wrong. Please try again later.", "tipster_script_login"),
     ]);
     $style = get_option('ts_style', 'style-blue');
     if($style == "style-custom") {
@@ -125,6 +135,8 @@ function _tsl_helper_custom_style() {
 
 /* Login/Register */
 function tsl_login_form_modal() {
+    $recaptcha_status = get_option("tsl_recaptcha_enable", "0");
+
     $args = [
         "echo"      => false,
         "id_submit" => "tsl_login_submit"
@@ -137,6 +149,8 @@ function tsl_login_form_modal() {
 add_action("wp_footer", "tsl_login_form_modal");
 
 function tsl_register_form_modal() {
+    $recaptcha_status = get_option("tsl_recaptcha_enable", "0");
+
     $template_id = get_option("tsl_form_template", "1");
     include TSL_PATH."php/templates/register".$template_id.".php";
 }

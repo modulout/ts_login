@@ -159,6 +159,38 @@ if(isset($_GET['save_config'])) {
                         </tr>
                     </tbody>
                 </table>
+                <h3><?php esc_html_e("Google reCAPTCHA v3", "tipster_script_login"); ?></h3>
+                <table class="form-table">
+                    <tbody>
+                        <tr>
+                            <th>
+                                <?php esc_html_e("Status", "tipster_script_login"); ?>
+                            </th>
+                            <td>
+                                <select name="tsl_recaptcha_enable">
+                                    <option value="0"<?php echo (get_option("tsl_recaptcha_enable", "0") == "0") ? " selected" : ""; ?>><?php esC_html_e("Disable", "tipster_script_login"); ?></option>
+                                    <option value="1"<?php echo (get_option("tsl_recaptcha_enable", "0") == "1") ? " selected" : ""; ?>><?php esC_html_e("Enable", "tipster_script_login"); ?></option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <?php esc_html_e("Site key", "tipster_script_login"); ?>
+                            </th>
+                            <td>
+                                <input type="text" size="45" name="tsl_recaptcha_site_key" value="<?php echo get_option("tsl_recaptcha_site_key", ""); ?>" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <?php esc_html_e("Secret key", "tipster_script_login"); ?>
+                            </th>
+                            <td>
+                                <input type="text" size="45" name="tsl_recaptcha_secret_key" value="<?php echo get_option("tsl_recaptcha_secret_key", ""); ?>" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
                 <p class="submit">
                     <input type="submit" name="save" value="<?php esc_html_e('Save changes', 'tipster_script_login');?>" class="button button-primary">
                 </p>

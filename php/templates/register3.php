@@ -31,6 +31,9 @@
                         <p class="tsl-register-submit">
                             <input type="submit" id="tsl_register_submit" class="button button-primary" value="<?php esc_html_e("Register", "tipster_script_login"); ?>">
                         </p>
+                        <?php if($recaptcha_status == "1") : ?>
+                            <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
+                        <?php endif; ?>
                         <?php echo wp_nonce_field('ajax-register-nonce', 'rsecurity', true, false); ?>
                         <p class='tsl_form_error alert alert-danger' role='alert'></p>
                     </div>
