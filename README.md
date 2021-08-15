@@ -5,7 +5,7 @@ With the TS login plugin, your users can log in or/and register from the front p
 
 There are also 3 login/register options: basic (only login or/and register form), the image on top (login or/and register form with image on top), and image on the left side (login or/and register form with image on the left side). All 3 options are fully responsive.
 
-Google reCAPTCHA is also available and you can use it with your site and secret key. By default this option is disabled.
+Google reCAPTCHA v3 is also available and you can use it with your site and secret key. By default this option is disabled.
 
 Bootstrap library and Font-Awesome library are included.
 
