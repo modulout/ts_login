@@ -40,7 +40,7 @@ js--tsl-register-popup
 - [x] Different style options for login/register popup
 - [x] Add captcha option
 - [ ] Options to change icons or disable them
-- [ ] Upload to WordPress directory
+- [x] Upload to WordPress directory
 
 ## Credits
 
