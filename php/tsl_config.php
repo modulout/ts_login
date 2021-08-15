@@ -160,6 +160,9 @@ if(isset($_GET['save_config'])) {
                     </tbody>
                 </table>
                 <h3><?php esc_html_e("Google reCAPTCHA v3", "tipster_script_login"); ?></h3>
+                <small>
+                    <?php echo esc_html_e("You need to register your website and get the site and secret keys.", "tipster_script_login")."<a href='https://www.google.com/recaptcha/admin/create' target='blank'>More information</a>"; ?>
+                </small>
                 <table class="form-table">
                     <tbody>
                         <tr>
@@ -178,7 +181,10 @@ if(isset($_GET['save_config'])) {
                                 <?php esc_html_e("Site key", "tipster_script_login"); ?>
                             </th>
                             <td>
-                                <input type="text" size="45" name="tsl_recaptcha_site_key" value="<?php echo get_option("tsl_recaptcha_site_key", ""); ?>" />
+                                <input type="text" size="45" name="tsl_recaptcha_site_key" value="<?php echo get_option("tsl_recaptcha_site_key", ""); ?>" /><br>
+                                <small>
+                                    <?php echo esc_html__("For test purposes, you can use the next site key", "tipster_script_login")." <b>6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI</b>"; ?>
+                                </small>
                             </td>
                         </tr>
                         <tr>
@@ -186,7 +192,21 @@ if(isset($_GET['save_config'])) {
                                 <?php esc_html_e("Secret key", "tipster_script_login"); ?>
                             </th>
                             <td>
-                                <input type="text" size="45" name="tsl_recaptcha_secret_key" value="<?php echo get_option("tsl_recaptcha_secret_key", ""); ?>" />
+                                <input type="text" size="45" name="tsl_recaptcha_secret_key" value="<?php echo get_option("tsl_recaptcha_secret_key", ""); ?>" /><br>
+                                <small>
+                                    <?php echo esc_html__("For test purposes, you can use the next secret key", "tipster_script_login")." <b>6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe</b>"; ?>
+                                </small>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <?php esc_html_e("reCAPTCHA badge", "tipster_script_login"); ?>
+                            </th>
+                            <td>
+                                <select name="tsl_recaptcha_badge">
+                                    <option value="1"<?php echo (get_option("tsl_recaptcha_badge", "1") == "1") ? " selected" : ""; ?>><?php esc_html_e("Display", "tipster_script_login"); ?></option>
+                                    <option value="2"<?php echo (get_option("tsl_recaptcha_badge", "1") == "2") ? " selected" : ""; ?>><?php esc_html_e("Hide", "tipster_script_login"); ?></option>
+                                </select>
                             </td>
                         </tr>
                     </tbody>

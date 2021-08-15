@@ -77,7 +77,8 @@ function _tsl_helper_custom_color($colors, $color_name, $default_color) {
 
 function _tsl_helper_custom_style() {
     $custom_colors = get_option("tsl_custom_colors");
-    return "
+    $data = "";
+    $data .= "
     /* Header */
     .tsl_login_css .modal-header {
         background-color: "._tsl_helper_custom_color($custom_colors, 'tsl_hbgc', '#fff').";
@@ -130,12 +131,22 @@ function _tsl_helper_custom_style() {
         color: "._tsl_helper_custom_color($custom_colors, 'tsl_bhtc', '#fff').";
     }
     ";
+    if($custom_colors["tsl_recaptcha_badge"] == "2" && $custom_colors['tsl_recaptcha_enable'] == "1") {
+        $data .= "
+        /* Recaptcha hide */
+        .grecaptcha-badge {
+            visibility: hidden;
+         }
+        ";
+    }
+    return $data;
 }
 /* END Custom colors */
 
 /* Login/Register */
 function tsl_login_form_modal() {
     $recaptcha_status = get_option("tsl_recaptcha_enable", "0");
+    $recaptcha_badge = get_option("tsl_recaptcha_badge", "1");
 
     $args = [
         "echo"      => false,
@@ -150,6 +161,7 @@ add_action("wp_footer", "tsl_login_form_modal");
 
 function tsl_register_form_modal() {
     $recaptcha_status = get_option("tsl_recaptcha_enable", "0");
+    $recaptcha_badge = get_option("tsl_recaptcha_badge", "1");
 
     $template_id = get_option("tsl_form_template", "1");
     include TSL_PATH."php/templates/register".$template_id.".php";

@@ -1,0 +1,296 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Tipster script login\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-08-15 11:36+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.5.3; wp-5.8\n"
+"X-Domain: tipster_script_login"
+
+#: php/tsl_config.php:8
+msgid "Basic"
+msgstr ""
+
+#: php/tsl_config.php:55
+msgid "Button"
+msgstr ""
+
+#: php/tsl_config.php:60
+msgid "Button background color"
+msgstr ""
+
+#: php/tsl_config.php:68
+msgid "Button border color"
+msgstr ""
+
+#: php/tsl_config.php:72
+msgid "Button hover background color"
+msgstr ""
+
+#: php/tsl_config.php:80
+msgid "Button hover border color"
+msgstr ""
+
+#: php/tsl_config.php:76
+msgid "Button hover text color"
+msgstr ""
+
+#: php/tsl_config.php:64
+msgid "Button text color"
+msgstr ""
+
+#: php/TSL_Admin.php:9 php/tsl_config.php:20
+msgid "Config"
+msgstr ""
+
+#: php/tsl_config.php:113
+msgid "Content background color"
+msgstr ""
+
+#: php/tsl_config.php:121
+msgid "Content input background color"
+msgstr ""
+
+#: php/tsl_config.php:129
+msgid "Content input border color"
+msgstr ""
+
+#: php/tsl_config.php:125
+msgid "Content input text color"
+msgstr ""
+
+#: php/tsl_config.php:117
+msgid "Content text (label) color"
+msgstr ""
+
+#: php/tsl_config.php:207
+msgid "Display"
+msgstr ""
+
+#: php/tsl_config.php:56
+msgid "Dropdown"
+msgstr ""
+
+#: php/tsl_config.php:86
+msgid "Dropdown background color"
+msgstr ""
+
+#: php/tsl_config.php:94
+msgid "Dropdown hover text color"
+msgstr ""
+
+#: php/tsl_config.php:90
+msgid "Dropdown text color"
+msgstr ""
+
+#: php/tsl_ajax.php:95 php/tsl_ajax.php:102 php/templates/register1.php:16
+#: php/templates/register2.php:20 php/templates/register3.php:24
+msgid "Email"
+msgstr ""
+
+#: php/tsl_config.php:197
+msgid "For test purposes, you can use the next secret key"
+msgstr ""
+
+#: php/tsl_config.php:186
+msgid "For test purposes, you can use the next site key"
+msgstr ""
+
+#: php/tsl_config.php:162
+msgid "Google reCAPTCHA v3"
+msgstr ""
+
+#: php/tsl_config.php:105
+msgid "Header background color"
+msgstr ""
+
+#: php/tsl_config.php:109
+msgid "Header text color"
+msgstr ""
+
+#: php/tsl_config.php:208
+msgid "Hide"
+msgstr ""
+
+#. URI of the plugin
+#. Author URI of the plugin
+msgid "https://www.modulout.com"
+msgstr ""
+
+#: php/tsl_config.php:42
+msgid "Image"
+msgstr ""
+
+#: php/tsl_config.php:10
+msgid "Image on left side"
+msgstr ""
+
+#: php/tsl_config.php:9
+msgid "Image on top"
+msgstr ""
+
+#: tipster_script_login.php:47
+msgid "Incorrect username or password please try again!"
+msgstr ""
+
+#: php/Tsl_login_register.php:28 php/Tsl_login_register.php:36
+msgid "Log out"
+msgstr ""
+
+#: php/tsl_config.php:51
+msgid "Log out option"
+msgstr ""
+
+#: php/Tsl_login_register.php:46
+msgid "Login"
+msgstr ""
+
+#: php/templates/login2.php:6 php/templates/login3.php:8
+#: php/templates/login3.php:8 php/templates/register2.php:6
+#: php/templates/register2.php:6 php/templates/register3.php:8
+#: php/templates/register3.php:8
+msgid "Login form"
+msgstr ""
+
+#: php/tsl_config.php:27
+msgid "Login/Register style"
+msgstr ""
+
+#. Author of the plugin
+msgid "Modulout"
+msgstr ""
+
+#: php/tsl_ajax.php:92
+msgid "New User Registration"
+msgstr ""
+
+#: php/tsl_ajax.php:93
+msgid "New user registration on your site"
+msgstr ""
+
+#: php/templates/register1.php:20 php/templates/register2.php:24
+#: php/templates/register3.php:28
+msgid "Password"
+msgstr ""
+
+#: php/tsl_config.php:203
+msgid "reCAPTCHA badge"
+msgstr ""
+
+#: php/Tsl_login_register.php:51 php/templates/register1.php:24
+#: php/templates/register2.php:28 php/templates/register3.php:32
+msgid "Register"
+msgstr ""
+
+#: tipster_script_login.php:51
+msgid "Registration failed! Please try again."
+msgstr ""
+
+#: php/tsl_ajax.php:99
+msgid "Registration Was Successful"
+msgstr ""
+
+#: tipster_script_login.php:52
+msgid "Registration was successful. You can log in."
+msgstr ""
+
+#: php/tsl_config.php:215
+msgid "Save changes"
+msgstr ""
+
+#: php/tsl_config.php:192
+msgid "Secret key"
+msgstr ""
+
+#: php/templates/login1.php:7 php/templates/login2.php:11
+#: php/templates/login3.php:15
+msgid "Sign in"
+msgstr ""
+
+#: php/templates/register1.php:6 php/templates/register2.php:10
+#: php/templates/register3.php:14
+msgid "Sign up"
+msgstr ""
+
+#: php/tsl_config.php:181
+msgid "Site key"
+msgstr ""
+
+#: tipster_script_login.php:53
+msgid "Something went wrong. Please try again later."
+msgstr ""
+
+#: php/tsl_config.php:170
+msgid "Status"
+msgstr ""
+
+#: php/tsl_config.php:133
+msgid "Submit button background color"
+msgstr ""
+
+#: php/tsl_config.php:141
+msgid "Submit button border color"
+msgstr ""
+
+#: php/tsl_config.php:145
+msgid "Submit button hover background color"
+msgstr ""
+
+#: php/tsl_config.php:153
+msgid "Submit button hover border color"
+msgstr ""
+
+#: php/tsl_config.php:149
+msgid "Submit button hover text color"
+msgstr ""
+
+#: php/tsl_config.php:137
+msgid "Submit button text color"
+msgstr ""
+
+#: tipster_script_login.php:50
+msgid "The email already exists!"
+msgstr ""
+
+#: tipster_script_login.php:49
+msgid "The username already exists!"
+msgstr ""
+
+#: tipster_script_login.php:48
+msgid "The username or e-mail or password field is empty!"
+msgstr ""
+
+#: tipster_script_login.php:46
+msgid "The username or password field is empty!"
+msgstr ""
+
+#. Name of the plugin
+#. Description of the plugin
+msgid "Tipster script login"
+msgstr ""
+
+#: php/Tsl_login_register.php:7
+msgid "TS - Login form"
+msgstr ""
+
+#: php/tsl_ajax.php:94 php/tsl_ajax.php:101 php/templates/register1.php:12
+#: php/templates/register2.php:16 php/templates/register3.php:20
+msgid "Username"
+msgstr ""
+
+#: php/tsl_config.php:164
+msgid "You need to register your website and get the site and secret keys."
+msgstr ""
+
+#: php/tsl_ajax.php:100
+msgid "You registered on site"
+msgstr ""

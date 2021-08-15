@@ -20,7 +20,7 @@ class TSL_Admin {
         }
         
         //Save all colors - only 1 request on frontend to get all colors
-        unset($_POST['save']);
+        unset($_POST['save'], $_POST['tsl_recaptcha_secret_key'], $_POST['tsl_recaptcha_site_key'], $_POST['tsl_form_image']);
         update_option('tsl_custom_colors', $_POST);
 
         echo "<script>window.location = 'admin.php?page=tsl_config';</script>";

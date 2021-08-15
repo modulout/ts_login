@@ -21,6 +21,11 @@
                     </div>
                     <div class="modal-body">
                         <?php echo wp_login_form($args); ?>
+                        <?php if($recaptcha_badge == "2" && $recaptcha_status == "1") : ?>
+                            <p class="tsl_recaptcha_message">
+                                This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.
+                            </p>
+                        <?php endif; ?>
                         <?php echo wp_nonce_field('ajax-login-nonce', 'security', true, false); ?>
                         <p class='tsl_form_error alert alert-danger' role='alert'></p>
                         <p class='tsl_register_success alert alert-success' role='alert'></p>

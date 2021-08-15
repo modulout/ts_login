@@ -23,6 +23,11 @@
                 <p class="tsl-register-submit">
                     <input type="submit" id="tsl_register_submit" class="button button-primary" value="<?php esc_html_e("Register", "tipster_script_login"); ?>">
                 </p>
+                <?php if($recaptcha_badge == "2" && $recaptcha_status == "1") : ?>
+                    <p class="tsl_recaptcha_message">
+                        This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.
+                    </p>
+                <?php endif; ?>
                 <?php if($recaptcha_status == "1") : ?>
                     <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
                 <?php endif; ?>

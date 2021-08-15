@@ -3,6 +3,10 @@
 
 With the TS login plugin, your users can log in or/and register from the front page (not needed to go to wp-admin anymore). A simple widget is added, but you can add a class for login and a class for registration on any website element. The plugin is working with the latest WordPress version and is fully customizable. You can change colors in wp-admin to have your website look-alike feel.
 
+There are also 3 login/register options: basic (only login or/and register form), the image on top (login or/and register form with image on top), and image on the left side (login or/and register form with image on the left side). All 3 options are fully responsive.
+
+Google reCAPTCHA is also available and you can use it with your site and secret key. By default this option is disabled.
+
 Bootstrap library and Font-Awesome library are included.
 
 ## Installation
@@ -34,7 +38,7 @@ js--tsl-register-popup
 - [x] Make a standalone version
 - [x] Logout from front page
 - [x] Different style options for login/register popup
-- [ ] Add captcha option
+- [x] Add captcha option
 - [ ] Options to change icons or disable them
 - [ ] Upload to WordPress directory
 
