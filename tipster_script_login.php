@@ -31,12 +31,12 @@ function tsl_include_style_script() {
     $site_key = get_option("tsl_recaptcha_site_key", "");
     $recaptcha_status = get_option("tsl_recaptcha_enable", "0");
 
-    wp_enqueue_style('bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css');
-    wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
+    wp_enqueue_style('bootstrap', TSL_URL.'assets/css/bootstrap.min.css');
+    wp_enqueue_style('font-awesome', TSL_URL.'assets/css/font-awesome.css');
     if($recaptcha_status == "1") {
         wp_enqueue_script("recaptcha", 'https://www.google.com/recaptcha/api.js?render='.$site_key);
     }
-    wp_enqueue_script('bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js', array('jquery'));
+    wp_enqueue_script('bootstrap', TSL_URL.'assets/js/bootstrap.bundle.min.js', array('jquery'));
     wp_enqueue_style('tsl-main', TSL_URL.'assets/css/main.css');
     wp_enqueue_script("tsl-main", TSL_URL.'assets/js/main.js', array('jquery'));
     wp_localize_script('tsl-main', 'tsl_main', [
@@ -54,7 +54,7 @@ function tsl_include_style_script() {
     ]);
     $style = get_option('ts_style', 'style-blue');
     if($style == "style-custom") {
-        wp_add_inline_style('tsl-main', _tsl_helper_custom_style());
+        wp_add_inline_style('tsl-main', tsl_helper_custom_style());
     } 
 }
 add_action('wp_enqueue_scripts', 'tsl_include_style_script');
@@ -67,7 +67,7 @@ include_once TSL_PATH."php/tsl_ajax.php";
 /* END Include files */
 
 /* Custom colors */
-function _tsl_helper_custom_color($colors, $color_name, $default_color) {
+function tsl_helper_custom_color($colors, $color_name, $default_color) {
     $tsl_color = $default_color;
     if(isset($colors[$color_name]) && $colors[$color_name] != "") {
         $tsl_color = $colors[$color_name];
@@ -75,60 +75,60 @@ function _tsl_helper_custom_color($colors, $color_name, $default_color) {
     return $tsl_color;
 }
 
-function _tsl_helper_custom_style() {
+function tsl_helper_custom_style() {
     $custom_colors = get_option("tsl_custom_colors");
     $data = "";
     $data .= "
     /* Header */
     .tsl_login_css .modal-header {
-        background-color: "._tsl_helper_custom_color($custom_colors, 'tsl_hbgc', '#fff').";
+        background-color: ".tsl_helper_custom_color($custom_colors, 'tsl_hbgc', '#fff').";
     }
     .tsl_login_css .modal-header .modal-title {
-        color: "._tsl_helper_custom_color($custom_colors, 'tsl_htc', '#000').";
+        color: ".tsl_helper_custom_color($custom_colors, 'tsl_htc', '#000').";
     }
     /* Content */
     .tsl_login_css .modal-body {
-        background-color: "._tsl_helper_custom_color($custom_colors, 'tsl_cbgc', '#fff').";
-        color: "._tsl_helper_custom_color($custom_colors, 'tsl_ctc', '#212529').";
+        background-color: ".tsl_helper_custom_color($custom_colors, 'tsl_cbgc', '#fff').";
+        color: ".tsl_helper_custom_color($custom_colors, 'tsl_ctc', '#212529').";
     }
     .tsl_login_css .modal-body .input {
-        background-color: "._tsl_helper_custom_color($custom_colors, 'tsl_cibgc', '#fafafa').";
-        border-color: "._tsl_helper_custom_color($custom_colors, 'tsl_cibc', '#a3a3a3')."!important;
-        color: "._tsl_helper_custom_color($custom_colors, 'tsl_citc', '#111')."!important;
+        background-color: ".tsl_helper_custom_color($custom_colors, 'tsl_cibgc', '#fafafa').";
+        border-color: ".tsl_helper_custom_color($custom_colors, 'tsl_cibc', '#a3a3a3')."!important;
+        color: ".tsl_helper_custom_color($custom_colors, 'tsl_citc', '#111')."!important;
     }
     /* Submit button */
     .tsl_login_css .modal-body #tsl_login_submit, .tsl_login_css .modal-body #tsl_register_submit {
-        background-color: "._tsl_helper_custom_color($custom_colors, 'tsl_sbbgc', '#0170B9').";
-        border-color: "._tsl_helper_custom_color($custom_colors, 'tsl_sbbc', '#0170B9').";
-        color: "._tsl_helper_custom_color($custom_colors, 'tsl_sbtc', '#fff').";
+        background-color: ".tsl_helper_custom_color($custom_colors, 'tsl_sbbgc', '#0170B9').";
+        border-color: ".tsl_helper_custom_color($custom_colors, 'tsl_sbbc', '#0170B9').";
+        color: ".tsl_helper_custom_color($custom_colors, 'tsl_sbtc', '#fff').";
     }
     .tsl_login_css .modal-body #tsl_login_submit:hover, .tsl_login_css .modal-body #tsl_login_submit:visited, 
     .tsl_login_css .modal-body #tsl_register_submit:hover, .tsl_login_css .modal-body #tsl_register_submit:visited {
-        background-color: "._tsl_helper_custom_color($custom_colors, 'tsl_sbhbgc', '#3a3a3a').";
-        border-color: "._tsl_helper_custom_color($custom_colors, 'tsl_sbhbc', '#3a3a3a').";
-        color: "._tsl_helper_custom_color($custom_colors, 'tsl_sbhtc', '#fff').";
+        background-color: ".tsl_helper_custom_color($custom_colors, 'tsl_sbhbgc', '#3a3a3a').";
+        border-color: ".tsl_helper_custom_color($custom_colors, 'tsl_sbhbc', '#3a3a3a').";
+        color: ".tsl_helper_custom_color($custom_colors, 'tsl_sbhtc', '#fff').";
     }
     .tsl_login_form_header__logged-dd {
-        background-color: "._tsl_helper_custom_color($custom_colors, 'tsl_ddbgc', '#fff').";
+        background-color: ".tsl_helper_custom_color($custom_colors, 'tsl_ddbgc', '#fff').";
     }
     .tsl_login_form_header__logged-dd-icon  {
-        color: "._tsl_helper_custom_color($custom_colors, 'tsl_ddbgc', '#fff').";
+        color: ".tsl_helper_custom_color($custom_colors, 'tsl_ddbgc', '#fff').";
     }
     .tsl_login_form_header__logged-dd-item a, .tsl_login_form_header__logged-dd-item .tsl_logout_icon {
-        color: "._tsl_helper_custom_color($custom_colors, 'tsl_ddtc', '#000').";
+        color: ".tsl_helper_custom_color($custom_colors, 'tsl_ddtc', '#000').";
     }
     .tsl_login_form_header__logged-dd-item a:hover {
-        color: "._tsl_helper_custom_color($custom_colors, 'tsl_ddhtc', '#333').";
+        color: ".tsl_helper_custom_color($custom_colors, 'tsl_ddhtc', '#333').";
     }
     .tsl_login_form_header__logged a.tsl_login_form_header__logged-btn {
-        background-color: "._tsl_helper_custom_color($custom_colors, 'tsl_bbgc', '#565e64').";
-        border-color: "._tsl_helper_custom_color($custom_colors, 'tsl_bbc', '#51585e').";
-        color: "._tsl_helper_custom_color($custom_colors, 'tsl_ddbgc', '#fff').";
+        background-color: ".tsl_helper_custom_color($custom_colors, 'tsl_bbgc', '#565e64').";
+        border-color: ".tsl_helper_custom_color($custom_colors, 'tsl_bbc', '#51585e').";
+        color: ".tsl_helper_custom_color($custom_colors, 'tsl_ddbgc', '#fff').";
     }
     .tsl_login_form_header__logged a.tsl_login_form_header__logged-btn:hover, .tsl_login_form_header__logged a.tsl_login_form_header__logged-btn:visited {
-        background-color: "._tsl_helper_custom_color($custom_colors, 'tsl_bhbgc', '#5c636a').";
-        border-color: "._tsl_helper_custom_color($custom_colors, 'tsl_bhbc', '#565e64').";
-        color: "._tsl_helper_custom_color($custom_colors, 'tsl_bhtc', '#fff').";
+        background-color: ".tsl_helper_custom_color($custom_colors, 'tsl_bhbgc', '#5c636a').";
+        border-color: ".tsl_helper_custom_color($custom_colors, 'tsl_bhbc', '#565e64').";
+        color: ".tsl_helper_custom_color($custom_colors, 'tsl_bhtc', '#fff').";
     }
     ";
     if($custom_colors["tsl_recaptcha_badge"] == "2" && $custom_colors['tsl_recaptcha_enable'] == "1") {

@@ -5,7 +5,7 @@
             <div class="tsl_wrapper">
                 <div class="tsl_inside d-none d-sm-block">
                     <?php if($header_img != "") : ?>
-                        <img src="<?php echo $header_img; ?>" title="<?php esc_html_e("Login form", "tipster_script_login"); ?>" alt="<?php esc_html_e("Login form", "tipster_script_login"); ?>" />
+                        <img src="<?php echo esc_url($header_img); ?>" title="<?php esc_html_e("Login form", "tipster_script_login"); ?>" alt="<?php esc_html_e("Login form", "tipster_script_login"); ?>" />
                     <?php endif; ?>
                 </div>
                 <div class="tsl_inside_content">

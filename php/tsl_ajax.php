@@ -4,7 +4,7 @@ add_action('wp_ajax_nopriv_tsl_login_form', 'tsl_login_form');
 function tsl_login_form() {
     check_ajax_referer('ajax-login-nonce', 'security');
 
-    $recaptcha_status = $_POST['recaptcha_status'];
+    $recaptcha_status = sanitize_text_field($_POST['recaptcha_status']);
 
     $info = array();
     $info['user_login'] = sanitize_user($_POST['username']);
@@ -20,22 +20,22 @@ function tsl_login_form() {
         $recaptcha_data = json_decode(file_get_contents($recaptcha_url . '?secret=' . $recaptcha_secret . '&response=' . $recaptcha_response));
 
         if($recaptcha_data->success == true) {
-            _login_user_helper($info);
+            tsl_login_user_helper($info);
         } else {
-            echo json_encode("4");
+            echo wp_json_encode("4");
             die();
         }
     } else {
-        _login_user_helper($info);
+        tsl_login_user_helper($info);
     } 
 }
 
-function _login_user_helper($info) {
+function tsl_login_user_helper($info) {
     $user_signon = wp_signon($info, false);
     if (is_wp_error($user_signon)){
-        echo json_encode("0");
+        echo wp_json_encode("0");
     } else {
-        echo json_encode("1");
+        echo wp_json_encode("1");
     }
     die();
 }
@@ -45,7 +45,7 @@ add_action('wp_ajax_nopriv_tsl_register_form', 'tsl_register_form');
 function tsl_register_form() {
     check_ajax_referer('ajax-register-nonce', 'rsecurity');
 
-    $recaptcha_status = $_POST['recaptcha_status'];
+    $recaptcha_status = sanitize_text_field($_POST['recaptcha_status']);
     $username = sanitize_user($_POST['username']);
     $email = sanitize_email($_POST['email']);
     $pass = $_POST['pass'];
@@ -59,30 +59,30 @@ function tsl_register_form() {
         $recaptcha_data = json_decode(file_get_contents($recaptcha_url . '?secret=' . $recaptcha_secret . '&response=' . $recaptcha_response));
 
         if($recaptcha_data->success == true) {
-            _register_user_helper($username, $email, $pass);
+            tsl_register_user_helper($username, $email, $pass);
         } else {
-            echo json_encode("4");
+            echo wp_json_encode("4");
             die();
         }
     } else {
-        _register_user_helper($username, $email, $pass);
+        tsl_register_user_helper($username, $email, $pass);
     } 
 }
 
-function _register_user_helper() {
+function tsl_register_user_helper() {
     //Check if username exists
     if(username_exists($username)) {
-        echo json_encode("0");
+        echo wp_json_encode("0");
         die();
     } elseif(email_exists($email)) {
-        echo json_encode("3");
+        echo wp_json_encode("3");
         die();
     } else {
         //Create a new user
         $new_user_id = wp_create_user($username, $pass, $email);
 
         if(!empty($new_user_id->errors)) {
-            echo json_encode("2");
+            echo wp_json_encode("2");
             die();
         } elseif(isset($new_user_id) && $new_user_id > 0) {
             $site_name = get_bloginfo("name");
@@ -102,10 +102,10 @@ function _register_user_helper() {
             $user_body .= esc_html__("Email", "tipster_script_login").": ".$email;
             wp_mail($email, $user_title, $user_body);
 
-            echo json_encode("1");
+            echo wp_json_encode("1");
             die();
         } else {
-            echo json_encode("2");
+            echo wp_json_encode("2");
             die();
         }
     }

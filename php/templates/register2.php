@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <?php if($header_img != "") : ?>
-                <img src="<?php echo $header_img; ?>" title="<?php esc_html_e("Login form", "tipster_script_login"); ?>" alt="<?php esc_html_e("Login form", "tipster_script_login"); ?>" />
+                <img src="<?php echo esc_url($header_img); ?>" title="<?php esc_html_e("Login form", "tipster_script_login"); ?>" alt="<?php esc_html_e("Login form", "tipster_script_login"); ?>" />
             <?php endif; ?>
             <div class="modal-header">
                 <h4 class="modal-title">
