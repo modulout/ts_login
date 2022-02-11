@@ -69,6 +69,10 @@ Yes. You can use it for any of your project/s.
 
 == Changelog ==
 
+= 1.0.1 =
+
+Fixed Font Awesome issue
+
 = 1.0.0 =
 
 Initial release
