@@ -69,7 +69,7 @@ function tsl_register_form() {
     } 
 }
 
-function tsl_register_user_helper() {
+function tsl_register_user_helper($username, $email, $pass) {
     //Check if username exists
     if(username_exists($username)) {
         echo wp_json_encode("0");
