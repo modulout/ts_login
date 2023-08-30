@@ -51,6 +51,7 @@ function tsl_include_style_script() {
         'register_fail'    => esc_html__("Registration failed! Please try again.", "tipster_script_login"),
         'register_success' => esc_html__("Registration was successful. You can log in.", "tipster_script_login"),
         'recaptcha_error'  => esc_html__("Something went wrong. Please try again later.", "tipster_script_login"),
+        'email_error'      => esc_html__("Invalid email format. Please enter a valid email address.", "tipster_script_login"),
     ]);
     $style = get_option('ts_style', 'style-blue');
     if($style == "style-custom") {

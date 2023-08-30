@@ -129,6 +129,8 @@ jQuery(function($) {
                         $(".tsl_register_modal #tsl_email").attr("style", "border: 1px solid red !important");
                     } else if(data === '4') {
                         $('.tsl_register_modal .tsl_form_error').show().html("<i class='fa fa-exclamation-triangle'></i>&nbsp;"+tsl_main.recaptcha_error);
+                    } else if(data === '5') {
+                        $('.tsl_register_modal .tsl_form_error').show().html("<i class='fa fa-exclamation-triangle'></i>&nbsp;"+tsl_main.email_error);
                         $(".tsl_register_modal #tsl_email").attr("style", "border: 1px solid red !important");
                     } else {
                         $('.tsl_register_modal').modal('hide');

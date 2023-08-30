@@ -31,7 +31,7 @@ function tsl_login_form() {
 }
 
 function tsl_login_user_helper($info) {
-    $user_signon = wp_signon($info, false);
+    $user_signon = wp_signon($info, is_ssl());
     if (is_wp_error($user_signon)){
         echo wp_json_encode("0");
     } else {
@@ -49,6 +49,12 @@ function tsl_register_form() {
     $username = sanitize_user($_POST['username']);
     $email = sanitize_email($_POST['email']);
     $pass = $_POST['pass'];
+
+    // check if email is valid
+    if(!is_email($email)) {
+        echo wp_json_encode("5");
+        die();
+    }
 
     //Recaptcha
     if($recaptcha_status == "1") {
