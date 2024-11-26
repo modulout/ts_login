@@ -31,13 +31,15 @@ function tsl_login_form() {
 }
 
 function tsl_login_user_helper($info) {
-    $user_signon = wp_signon($info, is_ssl());
-    if (is_wp_error($user_signon)){
-        echo wp_json_encode("0");
+    $user = wp_signon($info, false);
+    if (is_wp_error($user)) {
+        echo json_encode(['error' => $user->get_error_message()]);
     } else {
-        echo wp_json_encode("1");
+        wp_set_current_user($user->ID);
+        wp_set_auth_cookie($user->ID, isset($_POST['remember']));
+        echo json_encode(['success' => true, 'redirect_url' => admin_url()]);
     }
-    die();
+    exit;
 }
 /* END User login */
 /* User register*/
