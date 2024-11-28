@@ -169,3 +169,18 @@ function tsl_register_form_modal() {
     include TSL_PATH."php/templates/register".$template_id.".php";
 }
 add_action("wp_footer", "tsl_register_form_modal");
+
+function tsl_lost_pass_form_modal() {
+    $recaptcha_status = get_option("tsl_recaptcha_enable", "0");
+    $recaptcha_badge = get_option("tsl_recaptcha_badge", "1");
+
+    /*$args = [
+        "echo"      => false,
+        "id_submit" => "tsl_login_submit"
+    ];*/
+
+    $template_id = get_option("tsl_form_template", "1");
+
+    include TSL_PATH."php/templates/lost_password".$template_id.".php";
+}
+add_action("wp_footer", "tsl_lost_pass_form_modal");

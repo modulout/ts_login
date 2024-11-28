@@ -8,6 +8,12 @@ jQuery(function($) {
         $('.tsl_register_modal').modal('show');
     });
 
+    $(".js--tsl-pass-popup").on("click", function(){
+        $('.tsl_login_modal').modal('hide');
+        $('.tsl_register_modal').modal('hide');
+        $('.tsl_lost_pass_modal').modal('show');
+    });
+
     $(".js--tsl-logged-show").on("click", function(){
         var logout_dd = $(".tsl_login_form_header__logged-dd");
         if(logout_dd.is(":hidden")) {
