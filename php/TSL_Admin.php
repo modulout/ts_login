@@ -20,6 +20,7 @@ class TSL_Admin {
         $all_data = [
             "tsl_form_template"        => sanitize_text_field($_POST['tsl_form_template']),
             "tsl_form_image"           => esc_url_raw($_POST['tsl_form_image']),
+            "tsl_register_show"        => sanitize_text_field($_POST['tsl_register_show']),
             "tsl_logout_option"        => sanitize_text_field($_POST['tsl_logout_option']),
             "tsl_logout_option"        => sanitize_text_field($_POST['tsl_logout_option']),
             "tsl_bbgc"                 => sanitize_hex_color($_POST['tsl_bbgc']),

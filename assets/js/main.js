@@ -4,6 +4,7 @@ jQuery(function($) {
     });
 
     $(".js--tsl-register-popup").on("click", function(){
+        $('.tsl_login_modal').modal('hide');
         $('.tsl_register_modal').modal('show');
     });
 

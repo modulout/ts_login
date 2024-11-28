@@ -45,6 +45,18 @@ if(isset($_GET['save_config'])) {
                                 </div>
                             </td>
                         </tr>
+                        <!-- Register option -->
+                        <tr>
+                            <th>
+                                <?php esc_html_e("Register option", "tipster_script_login"); ?>
+                            </th>
+                            <td>
+                                <select name="tsl_register_show" id="tsl_register_show">
+                                    <option value="1"<?php echo (get_option("tsl_register_show", 1) == 1) ? ' selected' : ''; ?>><?php esc_html_e("Show", "tipster_script_login"); ?></option>
+                                    <option value="0"<?php echo (get_option("tsl_register_show", 1) == 0) ? ' selected' : ''; ?>><?php esc_html_e("Hide", "tipster_script_login"); ?></option>
+                                </select>
+                            </td>
+                        </tr>
                         <!-- Logout option -->
                         <tr>
                             <th>

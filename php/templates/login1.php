@@ -13,6 +13,16 @@
             </div>
             <div class="modal-body">
                 <?php echo wp_login_form($args); ?>
+                <div class="tsl_login_footer">
+                    <button class="tsl_forgot_password js--tsl-pass-popup">
+                        <?php esc_html_e("Forgot password?", "tipster_script_login"); ?>
+                    </button>
+                    <?php if($register_show == 1) : ?>
+                        <button class="tsl_register js--tsl-register-popup">
+                            <?php esc_html_e("Register", "tipster_script_login"); ?>
+                        </button>
+                    <?php endif; ?>
+                </div>
                 <?php if($recaptcha_badge == "2" && $recaptcha_status == "1") : ?>
                     <p class="tsl_recaptcha_message">
                         This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.
