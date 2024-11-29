@@ -1,5 +1,28 @@
 jQuery(function($) {
+     // Function to get URL parameters
+     function getUrlParameter(name) {
+        name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+        var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+        var results = regex.exec(window.location.search);
+        return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+    }
+
+    // Check if the "popup" parameter exists in the URL
+    var popup = getUrlParameter('popup');
+
+    // If the "popup" parameter matches "tsl-reset-password", open the modal
+    if (popup === 'tsl-reset-password') {
+        openResetPasswordModal();
+    }
+
+    // Function to open the reset password modal
+    function openResetPasswordModal() {
+        // Replace with your modal's specific logic or framework
+        $('.tsl_reset_pass_modal').modal('show');
+    }
+
     $(".js--tsl-login-popup").on("click", function(){
+        $('.tsl_lost_pass_modal').modal('hide');
         $('.tsl_login_modal').modal('show');
     });
 
@@ -72,7 +95,7 @@ jQuery(function($) {
                     recaptcha_status: tsl_main.recaptcha_status
                 },
                 success: function(data, textStatus, XMLHTTPRequest) {
-                    data = JSON.parse(data); console.log(data);
+                    data = JSON.parse(data);
                     if(data === '0') {
                         $('.tsl_login_modal .tsl_form_error').show().html("<i class='fa fa-exclamation-triangle'></i>&nbsp;"+tsl_main.fields_wrong);
                         $(".tsl_login_modal #user_login").attr("style", "border: 1px solid red !important");
@@ -148,4 +171,136 @@ jQuery(function($) {
             });
         }
     });
+
+    $("#lost-password-submit").on("click", function (e) {
+        e.preventDefault();
+    
+        var user_email = $("#lost-password-email").val();
+        var errorElement = $('.tsl_login_modal .tsl_form_error');
+        var successElement = $('.tsl_login_modal .tsl_lost_pass_success');
+    
+        // Clear previous messages
+        errorElement.hide().html("");
+        successElement.hide().html("");
+        $("#lost-password-email").css("border", "");
+    
+        // Validate input
+        if (user_email === "") {
+            errorElement
+                .show()
+                .html("<i class='fa fa-exclamation-triangle'></i>&nbsp;Please provide an email address or username.");
+            $("#lost-password-email").css("border", "1px solid red");
+            return false;
+        }
+    
+        // Handle reCAPTCHA if enabled
+        if (tsl_main.recaptcha_status === "1") {
+            grecaptcha.ready(function () {
+                grecaptcha.execute(tsl_main.site_key, { action: 'submit' }).then(function (token) {
+                    $("#recaptchaResponse").val(token); // Set token in hidden field
+                    _tsl_lost_pass_ajax();
+                });
+            });
+        } else {
+            _tsl_lost_pass_ajax();
+        }
+    
+        function _tsl_lost_pass_ajax() {
+            $.ajax({
+                type: 'POST',
+                url: tsl_main.ajaxurl,
+                data: {
+                    action: 'tsl_lost_pass_form',
+                    user_email: user_email,
+                    security: $('#security').val(),
+                    recaptcha_response: $('#recaptchaResponse').val(),
+                    recaptcha_status: tsl_main.recaptcha_status
+                },
+                success: function (response) {
+                    if (response.success) {
+                        // Show success message
+                        successElement
+                            .show()
+                            .html("<i class='fa fa-check-circle'></i>&nbsp;" + response.data.message);
+                    } else if (response.data && response.data.message) {
+                        // Show error message from PHP
+                        errorElement
+                            .show()
+                            .html("<i class='fa fa-exclamation-triangle'></i>&nbsp;" + response.data.message);
+                        $("#lost-password-email").css("border", "1px solid red");
+                    } else {
+                        // Show generic error message if PHP didn't provide a message
+                        errorElement
+                            .show()
+                            .html("<i class='fa fa-exclamation-triangle'></i>&nbsp;An unexpected error occurred. Please try again.");
+                    }
+                },
+                error: function () {
+                    // Handle AJAX error
+                    errorElement
+                        .show()
+                        .html("<i class='fa fa-exclamation-triangle'></i>&nbsp;An unexpected error occurred. Please try again.");
+                }
+            });
+        }
+    });
+    $("#save-password-submit").on("click", function () {
+        var password = $("#new-password").val();
+        var key = new URLSearchParams(window.location.search).get("key"); // Get 'key' from URL
+        var login = new URLSearchParams(window.location.search).get("login"); // Get 'login' from URL
+        var errorElement = $('.tsl_login_modal.tsl_form_error');
+        var successElement = $('.tsl_login_modal .tsl_reset_pass_success');
+    
+        // Clear previous messages
+        errorElement.hide().html("");
+        successElement.hide().html("");
+    
+        // Basic validation
+        if (!password || password.length < 8) {
+            errorElement
+                .show()
+                .html("<i class='fa fa-exclamation-triangle'></i>&nbsp;Password must be at least 8 characters long.");
+            return false;
+        }
+    
+        if (!key || !login) {
+            errorElement
+                .show()
+                .html("<i class='fa fa-exclamation-triangle'></i>&nbsp;Invalid reset link. Please try again.");
+            return false;
+        }
+    
+        // AJAX request to save the new password
+        $.ajax({
+            type: "POST",
+            url: tsl_main.ajaxurl,
+            data: {
+                action: "tsl_save_new_password",
+                password: password,
+                key: key,
+                login: login,
+                security: $("#security").val(),
+            },
+            success: function (response) {
+                if (response.success) {
+                    successElement
+                        .show()
+                        .html("<i class='fa fa-check-circle'></i>&nbsp;" + response.data.message);
+                } else if (response.data && response.data.message) {
+                    errorElement
+                        .show()
+                        .html("<i class='fa fa-exclamation-triangle'></i>&nbsp;" + response.data.message);
+                } else {
+                    errorElement
+                        .show()
+                        .html("<i class='fa fa-exclamation-triangle'></i>&nbsp;An unexpected error occurred. Please try again.");
+                }
+            },
+            error: function () {
+                errorElement
+                    .show()
+                    .html("<i class='fa fa-exclamation-triangle'></i>&nbsp;An unexpected error occurred. Please try again.");
+            },
+        });
+    });    
 }); 
