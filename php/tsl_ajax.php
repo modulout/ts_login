@@ -122,7 +122,7 @@ function tsl_register_user_helper($username, $email, $pass) {
 /* Lost password */
 add_action('wp_ajax_nopriv_tsl_lost_pass_form', 'tsl_lost_pass_form');
 function tsl_lost_pass_form() {
-    check_ajax_referer('ajax-lost_pass-nonce', 'security');
+    check_ajax_referer('ajax-lost_pass-nonce', 'lsecurity');
 
     $recaptcha_status = sanitize_text_field($_POST['recaptcha_status']);
     $user_email = sanitize_text_field($_POST['user_email']);
@@ -196,7 +196,7 @@ function tsl_lost_pass_helper($user_email) {
 /* Reset password */
 add_action('wp_ajax_nopriv_tsl_save_new_password', 'tsl_save_new_password_func');
 function tsl_save_new_password_func() {
-    check_ajax_referer('ajax-reset_pass-nonce', 'security');
+    check_ajax_referer('ajax-reset_pass-nonce', 'psecurity');
 
     $password = sanitize_text_field($_POST['password']);
     $key = sanitize_text_field($_POST['key']);

@@ -176,8 +176,8 @@ jQuery(function($) {
         e.preventDefault();
     
         var user_email = $("#lost-password-email").val();
-        var errorElement = $('.tsl_login_modal .tsl_form_error');
-        var successElement = $('.tsl_login_modal .tsl_lost_pass_success');
+        var errorElement = $('.tsl_login_css .tsl_form_error');
+        var successElement = $('.tsl_login_css .tsl_lost_pass_success');
     
         // Clear previous messages
         errorElement.hide().html("");
@@ -212,7 +212,7 @@ jQuery(function($) {
                 data: {
                     action: 'tsl_lost_pass_form',
                     user_email: user_email,
-                    security: $('#security').val(),
+                    lsecurity: $('#lsecurity').val(),
                     recaptcha_response: $('#recaptchaResponse').val(),
                     recaptcha_status: tsl_main.recaptcha_status
                 },
@@ -248,8 +248,8 @@ jQuery(function($) {
         var password = $("#new-password").val();
         var key = new URLSearchParams(window.location.search).get("key"); // Get 'key' from URL
         var login = new URLSearchParams(window.location.search).get("login"); // Get 'login' from URL
-        var errorElement = $('.tsl_login_modal.tsl_form_error');
-        var successElement = $('.tsl_login_modal .tsl_reset_pass_success');
+        var errorElement = $('.tsl_login_css .tsl_form_error');
+        var successElement = $('.tsl_login_css .tsl_reset_pass_success');
     
         // Clear previous messages
         errorElement.hide().html("");
@@ -279,7 +279,7 @@ jQuery(function($) {
                 password: password,
                 key: key,
                 login: login,
-                security: $("#security").val(),
+                psecurity: $("psecurity").val(),
             },
             success: function (response) {
                 if (response.success) {

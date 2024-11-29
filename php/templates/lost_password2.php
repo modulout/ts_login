@@ -32,7 +32,7 @@
                         This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.
                     </p>
                 <?php endif; ?>
-                <?php echo wp_nonce_field('ajax-lost_pass-nonce', 'security', true, false); ?>
+                <?php echo wp_nonce_field('ajax-lost_pass-nonce', 'lsecurity', true, false); ?>
                 <p class='tsl_form_error alert alert-danger' role='alert'></p>
                 <p class='tsl_lost_pass_success alert alert-success' role='alert'></p>
             </div>

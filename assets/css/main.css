@@ -24,7 +24,7 @@
     cursor: pointer;
 }
 
-.tsl_login_css .tsl_form_error, .tsl_login_css .tsl_register_success {
+.tsl_login_css .tsl_form_error, .tsl_login_css .tsl_register_success, .tsl_lost_pass_success, .tsl_reset_pass_success {
     display: none;
 }
 .tsl_login_form_header__logged-dd {

@@ -23,7 +23,8 @@
                         <div id="custom-reset-password">
                             <p><?php esc_html_e("Enter your new password below or generate one.", "tipster_script_login"); ?></p>
                             <label for="new-password"><?php esc_html_e("New password", "tipster_script_login"); ?></label><br>
-                            <input type="password" id="new-password" required><br>
+                            <input type="password" id="new-password" required>
+                            <p><?php esc_html_e('Hint: The password should be at least twelve characters long. To make it stronger, use upper and lower case letters, numbers, and symbols like ! " ? $ % ^ & ).', 'tipster_script_login'); ?></p>
                             <button id="save-password-submit"><?php esc_html_e("Save Password", "tipster_script_login"); ?></button>
                         </div>
                         <div class="tsl_lost_pass_footer">
@@ -36,7 +37,7 @@
                                 This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.
                             </p>
                         <?php endif; ?>
-                        <?php echo wp_nonce_field('ajax-reset_pass-nonce', 'security', true, false); ?>
+                        <?php echo wp_nonce_field('ajax-reset_pass-nonce', 'psecurity', true, false); ?>
                         <p class='tsl_form_error alert alert-danger' role='alert'></p>
                         <p class='tsl_reset_pass_success alert alert-success' role='alert'></p>
                     </div>
