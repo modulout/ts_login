@@ -300,7 +300,7 @@ jQuery(function($) {
                     // Redirect after 2 seconds
                     setTimeout(function () {
                         window.location.href = response.data.redirect_url;
-                    }, 2000);
+                    }, 1000);
                 } else if (response.data && response.data.message) {
                     errorElement
                         .show()
