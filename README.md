@@ -39,8 +39,10 @@ js--tsl-register-popup
 - [x] Logout from front page
 - [x] Different style options for login/register popup
 - [x] Add captcha option
-- [ ] Options to change icons or disable them
+- [x] Options to change icons or disable them
 - [x] Upload to WordPress directory
+- [x] Lost password and Reset password functionality in pop-up
+- [x] Option to show register button on login pop-up
 
 ## Credits
 
