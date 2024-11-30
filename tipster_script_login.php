@@ -52,6 +52,10 @@ function tsl_include_style_script() {
         'register_success' => esc_html__("Registration was successful. You can log in.", "tipster_script_login"),
         'recaptcha_error'  => esc_html__("Something went wrong. Please try again later.", "tipster_script_login"),
         'email_error'      => esc_html__("Invalid email format. Please enter a valid email address.", "tipster_script_login"),
+        'email_empty'      => esc_html__("Please provide an email address or username.", "tipster_script_login"),
+        'unexpected_error' => esc_html__("An unexpected error occurred. Please try again.", "tipster_script_login"),
+        'short_pass'       => esc_html__("Password must be at least 12 characters long.", "tipster_script_login"),
+        'invalid_reset'    => esc_html__("Invalid reset link. Please try again.", "tipster_script_login"),
     ]);
     $style = get_option('ts_style', 'style-blue');
     if($style == "style-custom") {

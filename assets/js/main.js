@@ -15,6 +15,16 @@ jQuery(function($) {
         openResetPasswordModal();
     }
 
+    if (popup === 'tsl-login') {
+        $('.tsl_reset_pass_modal').modal('hide');
+        $('.tsl_login_modal').modal('show');
+    }
+
+    if (popup === 'tsl-register') {
+        $('.tsl_login_modal').modal('hide');
+        $('.tsl_register_modal').modal('show');
+    }
+
     // Function to open the reset password modal
     function openResetPasswordModal() {
         // Replace with your modal's specific logic or framework
@@ -188,7 +198,7 @@ jQuery(function($) {
         if (user_email === "") {
             errorElement
                 .show()
-                .html("<i class='fa fa-exclamation-triangle'></i>&nbsp;Please provide an email address or username.");
+                .html("<i class='fa fa-exclamation-triangle'></i>&nbsp;&nbsp;"+tsl_main.email_empty);
             $("#lost-password-email").css("border", "1px solid red");
             return false;
         }
@@ -221,25 +231,25 @@ jQuery(function($) {
                         // Show success message
                         successElement
                             .show()
-                            .html("<i class='fa fa-check-circle'></i>&nbsp;" + response.data.message);
+                            .html("<i class='fa fa-check-circle'></i>&nbsp;&nbsp;" + response.data.message);
                     } else if (response.data && response.data.message) {
                         // Show error message from PHP
                         errorElement
                             .show()
-                            .html("<i class='fa fa-exclamation-triangle'></i>&nbsp;" + response.data.message);
+                            .html("<i class='fa fa-exclamation-triangle'></i>&nbsp;&nbsp;" + response.data.message);
                         $("#lost-password-email").css("border", "1px solid red");
                     } else {
                         // Show generic error message if PHP didn't provide a message
                         errorElement
                             .show()
-                            .html("<i class='fa fa-exclamation-triangle'></i>&nbsp;An unexpected error occurred. Please try again.");
+                            .html("<i class='fa fa-exclamation-triangle'></i>&nbsp;&nbsp;" + tsl_main.unexpected_error);
                     }
                 },
                 error: function () {
                     // Handle AJAX error
                     errorElement
                         .show()
-                        .html("<i class='fa fa-exclamation-triangle'></i>&nbsp;An unexpected error occurred. Please try again.");
+                        .html("<i class='fa fa-exclamation-triangle'></i>&nbsp;&nbsp;" + tsl_main.unexpected_error);
                 }
             });
         }
@@ -256,17 +266,17 @@ jQuery(function($) {
         successElement.hide().html("");
     
         // Basic validation
-        if (!password || password.length < 8) {
+        if (!password || password.length < 12) {
             errorElement
                 .show()
-                .html("<i class='fa fa-exclamation-triangle'></i>&nbsp;Password must be at least 8 characters long.");
+                .html("<i class='fa fa-exclamation-triangle'></i>&nbsp;&nbsp;" + tsl_main.short_pass);
             return false;
         }
     
         if (!key || !login) {
             errorElement
                 .show()
-                .html("<i class='fa fa-exclamation-triangle'></i>&nbsp;Invalid reset link. Please try again.");
+                .html("<i class='fa fa-exclamation-triangle'></i>&nbsp;&nbsp;" + tsl_main.invalid_reset);
             return false;
         }
     
@@ -279,27 +289,32 @@ jQuery(function($) {
                 password: password,
                 key: key,
                 login: login,
-                psecurity: $("psecurity").val(),
+                psecurity: $("#psecurity").val(),
             },
             success: function (response) {
                 if (response.success) {
                     successElement
                         .show()
-                        .html("<i class='fa fa-check-circle'></i>&nbsp;" + response.data.message);
+                        .html("<i class='fa fa-check-circle'></i>&nbsp;&nbsp;" + response.data.message);
+
+                    // Redirect after 2 seconds
+                    setTimeout(function () {
+                        window.location.href = response.data.redirect_url;
+                    }, 2000);
                 } else if (response.data && response.data.message) {
                     errorElement
                         .show()
-                        .html("<i class='fa fa-exclamation-triangle'></i>&nbsp;" + response.data.message);
+                        .html("<i class='fa fa-exclamation-triangle'></i>&nbsp;&nbsp;" + response.data.message);
                 } else {
                     errorElement
                         .show()
-                        .html("<i class='fa fa-exclamation-triangle'></i>&nbsp;An unexpected error occurred. Please try again.");
+                        .html("<i class='fa fa-exclamation-triangle'></i>&nbsp;&nbsp;" + tsl_main.unexpected_error);
                 }
             },
             error: function () {
                 errorElement
                     .show()
-                    .html("<i class='fa fa-exclamation-triangle'></i>&nbsp;An unexpected error occurred. Please try again.");
+                    .html("<i class='fa fa-exclamation-triangle'></i>&nbsp;&nbsp;" + tsl_main.unexpected_error);
             },
         });
     });    

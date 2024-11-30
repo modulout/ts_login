@@ -136,7 +136,7 @@ function tsl_lost_pass_form() {
         $recaptcha_data = json_decode(file_get_contents($recaptcha_url . '?secret=' . $recaptcha_secret . '&response=' . $recaptcha_response));
 
         if ($recaptcha_data->success != true) {
-            wp_send_json_error(['message' => 'Invalid reCAPTCHA verification.']);
+            wp_send_json_error(['message' => esc_html__('Invalid reCAPTCHA verification.', 'tipster_script_login')]);
         }
     }
 
@@ -146,7 +146,7 @@ function tsl_lost_pass_form() {
 function tsl_lost_pass_helper($user_email) {
     // Check if input is provided
     if (empty($user_email)) {
-        wp_send_json_error(['message' => 'Please provide an email address or username.']);
+        wp_send_json_error(['message' => esc_html__('Please provide an email address or username.', 'tipster_script_login')]);
     }
 
     $user = null;
@@ -158,13 +158,13 @@ function tsl_lost_pass_helper($user_email) {
     }
 
     if (!$user) {
-        wp_send_json_error(['message' => 'No user found with this email address or username.']);
+        wp_send_json_error(['message' => esc_html__('No user found with this email address or username.', 'tipster_script_login')]);
     }
 
     // Generate password reset key
     $reset_key = get_password_reset_key($user);
     if (is_wp_error($reset_key)) {
-        wp_send_json_error(['message' => 'An error occurred. Please try again later.']);
+        wp_send_json_error(['message' => esc_html__('An error occurred. Please try again later.', 'tipster_script_login')]);
     }
 
     // Generate custom reset URL
@@ -187,9 +187,9 @@ function tsl_lost_pass_helper($user_email) {
     $message .= __("If you did not request a password reset, you can safely ignore this email.", 'tipster_script_login');
 
     if (wp_mail($user->user_email, $subject, $message)) {
-        wp_send_json_success(['message' => 'Password reset instructions have been sent to the associated email address.']);
+        wp_send_json_success(['message' => esc_html__('Password reset instructions have been sent to the associated email address.', 'tipster_script_login')]);
     } else {
-        wp_send_json_error(['message' => 'Failed to send email. Please try again later.']);
+        wp_send_json_error(['message' => esc_html__('Failed to send email. Please try again later.', 'tipster_script_login')]);
     }
 }
 /* END Lost password */
@@ -203,28 +203,27 @@ function tsl_save_new_password_func() {
     $login = sanitize_text_field($_POST['login']);
 
     if (empty($password) || empty($key) || empty($login)) {
-        wp_send_json_error(['message' => 'Invalid request. Please try again.']);
+        wp_send_json_error(['message' => esc_html__('Invalid request. Please try again.', 'tipster_script_login')]);
     }
 
     if (strlen($password) < 12) {
-        wp_send_json_error(['message' => 'Password must be at least 12 characters long.']);
+        wp_send_json_error(['message' => esc_html__('Password must be at least 12 characters long.', 'tipster_script_login')]);
     }
 
     // Retrieve the user by their login name
     $user = get_user_by('login', $login);
     if (!$user) {
-        wp_send_json_error(['message' => 'Invalid reset link.']);
+        wp_send_json_error(['message' => esc_html__('Invalid reset link.', 'tipster_script_login')]);
     }
 
     // Validate the reset key
     $check_key = check_password_reset_key($key, $login);
     if (is_wp_error($check_key)) {
-        wp_send_json_error(['message' => 'The reset link has expired or is invalid.']);
+        wp_send_json_error(['message' => esc_html__('The reset link has expired or is invalid.', 'tipster_script_login')]);
     }
 
     // Reset the password
     reset_password($user, $password);
-
-    wp_send_json_success(['message' => 'Your password has been successfully updated.']);
+    wp_send_json_success(['message' => esc_html__('Your password has been successfully updated.', 'tipster_script_login'), 'redirect_url' => home_url()]);
 }
 /* END Reset password */
