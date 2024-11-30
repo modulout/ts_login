@@ -22,16 +22,14 @@ class TSL_Admin {
                 'class' => [],
             ],
             'svg' => [
-                'xmlns' => [],
-                'width' => [],
-                'height' => [],
-                'viewBox' => [],
-                'fill' => [],
-                'class' => [],
+                'xmlns'   => [],
+                'viewbox' => [],
+                'width'   => [],
+                'height'  => [],
+                'fill'    => [],
             ],
             'path' => [
                 'd' => [],
-                'fill' => [],
             ],
         ];
 
