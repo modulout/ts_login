@@ -15,13 +15,24 @@ With the TS login plugin, your users can log in or/and register from the front p
 
 == Description ==
 
-With the TS login plugin, your users can log in or/and register from the front page (not needed to go to wp-admin anymore). A simple widget is added, but you can add a class for login and a class for registration on any website element. The plugin is working with the latest WordPress version and is fully customizable. You can change colors in wp-admin to have your website look-alike feel.
+With the TS Login plugin, your users can log in and register directly from the front page, eliminating the need to go to the WordPress wp-admin page. The plugin provides a simple widget, and you can also add login and registration functionality by applying specific CSS classes to any website element. It works seamlessly with the latest WordPress versions and is fully customizable, allowing you to adjust colors and styles in wp-admin for a consistent website look and feel.
 
-There are also 3 login/register options: basic (only login or/and register form), the image on top (login or/and register form with image on top), and image on the left side (login or/and register form with image on the left side). All 3 options are fully responsive.
+= New in Version 1.0.3 =
 
-Google reCAPTCHA v3 is also available and you can use it with your site and secret key. By default this option is disabled.
+* Added "Forgot Password" and "Reset Password" functionality, fully integrated into the pop-up, making account recovery easier for your users.
+* You can now customize icons or completely disable them as needed.
+* Added an option to show a register button directly on the login pop-up page for improved user flow.
 
-Bootstrap library and Font-Awesome library are included.
+Additionally, this plugin integrates perfectly with Tipster Script, a comprehensive WordPress solution for managing tipster platforms. Tipster Script includes features such as subscription-based user roles, picks management, and user payouts, making TS Login an ideal choice for tipster platforms looking to provide seamless login, registration, and password management.
+
+= Key Features: =
+
+* Fully responsive login/register pop-ups with multiple styles (Basic, Image on Top, Image on Left Side).
+* Google reCAPTCHA v3 support for enhanced security.
+* Includes Bootstrap 5.0.1 and FontAwesome libraries for styling and icons.
+* Multi-language support for international users.
+* Easy installation and detailed documentation.
+* Works seamlessly with the Tipster Script plugin, making it ideal for platforms focused on user subscriptions, tipster management, and secure authentication.
 
 == Screenshots ==
 
@@ -30,15 +41,7 @@ Bootstrap library and Font-Awesome library are included.
 3. Configuration 1
 4. Configuration 2
 
-Features:
-
-*   Login/Register popup
-*   Google reCAPTCHA v3 option
-*   Bootstrap 5.0.1
-*   FontAwesome icons
-*   Multi language support
-*   Easy installation
-*   Well documented
+By default, the reCAPTCHA option is disabled, but you can enable it easily with your site and secret keys. TS Login offers seamless integration into your WordPress site, supporting custom CSS classes for advanced use cases.
 
 == Installation ==
 
@@ -69,10 +72,20 @@ Yes. You can use it for any of your project/s.
 
 == Changelog ==
 
+= 1.0.3 =
+
+* Forgot password and Reset password functionality in pop-up
+* Option to add any icon/s or disable icon/s
+* Option to show register button on Login pop-up page
+
+= 1.0.2 =
+
+* Compatible with WordPress 6.7.x version
+
 = 1.0.1 =
 
-Fixed Font Awesome issue
+* Fixed Font Awesome issue
 
 = 1.0.0 =
 
-Initial release
+* Initial release
