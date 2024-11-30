@@ -17,6 +17,24 @@ class TSL_Admin {
     public function tsl_save_config() {
         $data = $_POST;
 
+        $allowed_html = [
+            'i' => [
+                'class' => [],
+            ],
+            'svg' => [
+                'xmlns' => [],
+                'width' => [],
+                'height' => [],
+                'viewBox' => [],
+                'fill' => [],
+                'class' => [],
+            ],
+            'path' => [
+                'd' => [],
+                'fill' => [],
+            ],
+        ];
+
         $all_data = [
             "tsl_form_template"        => sanitize_text_field($_POST['tsl_form_template']),
             "tsl_form_image"           => esc_url_raw($_POST['tsl_form_image']),
@@ -45,6 +63,13 @@ class TSL_Admin {
             "tsl_sbhbgc"               => sanitize_hex_color($_POST['tsl_sbhbgc']),
             "tsl_sbhtc"                => sanitize_hex_color($_POST['tsl_sbhtc']),
             "tsl_sbhbc"                => sanitize_hex_color($_POST['tsl_sbhbc']),
+            "tsl_login_icon"           => wp_kses($_POST['tsl_login_icon'], $allowed_html),
+            "tsl_register_icon"        => wp_kses($_POST['tsl_register_icon'], $allowed_html),
+            "tsl_logout_icon"          => wp_kses($_POST['tsl_logout_icon'], $allowed_html),
+            "tsl_lost_pass_icon"       => wp_kses($_POST['tsl_lost_pass_icon'], $allowed_html),
+            "tsl_reset_pass_icon"      => wp_kses($_POST['tsl_reset_pass_icon'], $allowed_html),
+            "tsl_success_icon"         => wp_kses($_POST['tsl_success_icon'], $allowed_html),
+            "tsl_error_icon"           => wp_kses($_POST['tsl_error_icon'], $allowed_html),
             "tsl_recaptcha_enable"     => sanitize_text_field($_POST['tsl_recaptcha_enable']),
             "tsl_recaptcha_site_key"   => sanitize_text_field($_POST['tsl_recaptcha_site_key']),
             "tsl_recaptcha_secret_key" => sanitize_text_field($_POST['tsl_recaptcha_secret_key']),

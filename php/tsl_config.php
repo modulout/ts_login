@@ -171,6 +171,74 @@ if(isset($_GET['save_config'])) {
                         </tr>
                     </tbody>
                 </table>
+                <h3><?php esc_html_e("Icons option", "tipster_script_login"); ?></h3>
+                <table class="form-table">
+                    <tbody>
+                        <tr>
+                            <th>
+                                <?php esc_html_e("Log in", "tipster_script_login"); ?>
+                            </th>
+                            <td>
+                                <textarea name="tsl_login_icon" rows="4" cols="70"><?php echo esc_html(get_option("tsl_login_icon", "")); ?></textarea><br>
+                                <small><?php esc_html_e("You can insert an SVG icon or use a font icon like FontAwesome by adding the appropriate HTML code, e.g., <i class='fa fa-icon'></i>. Please ensure that FontAwesome is loaded on your site if you are using FontAwesome icons.", "tipster_script_login"); ?></small>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <?php esc_html_e("Register", "tipster_script_login"); ?>
+                            </th>
+                            <td>
+                                <textarea name="tsl_register_icon" rows="4" cols="70"><?php echo esc_html(get_option("tsl_register_icon", "")); ?></textarea><br>
+                                <small><?php esc_html_e("You can insert an SVG icon or use a font icon like FontAwesome by adding the appropriate HTML code, e.g., <i class='fa fa-icon'></i>. Please ensure that FontAwesome is loaded on your site if you are using FontAwesome icons.", "tipster_script_login"); ?></small>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <?php esc_html_e("Log out", "tipster_script_login"); ?>
+                            </th>
+                            <td>
+                                <textarea name="tsl_logout_icon" rows="4" cols="70"><?php echo esc_html(get_option("tsl_logout_icon", "")); ?></textarea><br>
+                                <small><?php esc_html_e("You can insert an SVG icon or use a font icon like FontAwesome by adding the appropriate HTML code, e.g., <i class='fa fa-icon'></i>. Please ensure that FontAwesome is loaded on your site if you are using FontAwesome icons.", "tipster_script_login"); ?></small>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <?php esc_html_e("Lost password", "tipster_script_login"); ?>
+                            </th>
+                            <td>
+                                <textarea name="tsl_lost_pass_icon" rows="4" cols="70"><?php echo esc_html(get_option("tsl_lost_pass_icon", "")); ?></textarea><br>
+                                <small><?php esc_html_e("You can insert an SVG icon or use a font icon like FontAwesome by adding the appropriate HTML code, e.g., <i class='fa fa-icon'></i>. Please ensure that FontAwesome is loaded on your site if you are using FontAwesome icons.", "tipster_script_login"); ?></small>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <?php esc_html_e("Reset password", "tipster_script_login"); ?>
+                            </th>
+                            <td>
+                                <textarea name="tsl_reset_pass_icon" rows="4" cols="70"><?php echo esc_html(get_option("tsl_reset_pass_icon", "")); ?></textarea><br>
+                                <small><?php esc_html_e("You can insert an SVG icon or use a font icon like FontAwesome by adding the appropriate HTML code, e.g., <i class='fa fa-icon'></i>. Please ensure that FontAwesome is loaded on your site if you are using FontAwesome icons.", "tipster_script_login"); ?></small>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <?php esc_html_e("Success message", "tipster_script_login"); ?>
+                            </th>
+                            <td>
+                                <textarea name="tsl_success_icon" rows="4" cols="70"><?php echo esc_html(get_option("tsl_success_icon", "")); ?></textarea><br>
+                                <small><?php esc_html_e("You can insert an SVG icon or use a font icon like FontAwesome by adding the appropriate HTML code, e.g., <i class='fa fa-icon'></i>. Please ensure that FontAwesome is loaded on your site if you are using FontAwesome icons.", "tipster_script_login"); ?></small>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <?php esc_html_e("Error message", "tipster_script_login"); ?>
+                            </th>
+                            <td>
+                                <textarea name="tsl_error_icon" rows="4" cols="70"><?php echo esc_html(get_option("tsl_error_icon", "")); ?></textarea><br>
+                                <small><?php esc_html_e("You can insert an SVG icon or use a font icon like FontAwesome by adding the appropriate HTML code, e.g., <i class='fa fa-icon'></i>. Please ensure that FontAwesome is loaded on your site if you are using FontAwesome icons.", "tipster_script_login"); ?></small>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
                 <h3><?php esc_html_e("Google reCAPTCHA v3", "tipster_script_login"); ?></h3>
                 <small>
                     <?php echo esc_html_e("You need to register your website and get the site and secret keys.", "tipster_script_login")."<a href='https://www.google.com/recaptcha/admin/create' target='blank'>More information</a>"; ?>

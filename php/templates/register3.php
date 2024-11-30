@@ -11,7 +11,8 @@
                 <div class="tsl_inside_content">
                     <div class="modal-header">
                         <h4 class="modal-title">
-                            <i class="fa fa-user-plus"></i>&nbsp;<?php esc_html_e("Sign up", "tipster_script_login"); ?>           
+                            <?php echo (get_option("tsl_register_icon", "") != "") ? get_option("tsl_register_icon", "")."&nbsp;" : ""; ?>
+                            <?php esc_html_e("Sign up", "tipster_script_login"); ?>           
                         </h4>
                         <button type="button" class="btn-close btn-close-dark" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>

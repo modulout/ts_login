@@ -75,7 +75,7 @@ jQuery(function($) {
         var username = $("#user_login").val();
         var pass = $("#user_pass").val();
         if(username === "" || pass === "") {
-            $('.tsl_login_modal .tsl_form_error').show().html("<i class='fa fa-exclamation-triangle'></i>&nbsp;"+tsl_main.fields_empty);
+            $('.tsl_login_modal .tsl_form_error').show().html(tsl_main.error_icon + tsl_main.fields_empty);
             $(".tsl_login_modal #user_login").attr("style", "border: 1px solid red !important");
             $(".tsl_login_modal #user_pass").attr("style", "border: 1px solid red !important");
             return false;
@@ -107,7 +107,7 @@ jQuery(function($) {
                 success: function(data, textStatus, XMLHTTPRequest) {
                     data = JSON.parse(data);
                     if(data === '0') {
-                        $('.tsl_login_modal .tsl_form_error').show().html("<i class='fa fa-exclamation-triangle'></i>&nbsp;"+tsl_main.fields_wrong);
+                        $('.tsl_login_modal .tsl_form_error').show().html(tsl_main.error_icon + tsl_main.fields_wrong);
                         $(".tsl_login_modal #user_login").attr("style", "border: 1px solid red !important");
                         $(".tsl_login_modal #user_pass").attr("style", "border: 1px solid red !important");
                         return false;
@@ -125,7 +125,7 @@ jQuery(function($) {
         var email = $("#tsl_email").val();
         var pass = $("#tsl_password").val();
         if(username === "" || email === "" || pass === "") {
-            $('.tsl_register_modal .tsl_form_error').show().html("<i class='fa fa-exclamation-triangle'></i>&nbsp;"+tsl_main.rfields_empty);
+            $('.tsl_register_modal .tsl_form_error').show().html(tsl_main.error_icon + tsl_main.rfields_empty);
             $(".tsl_register_modal #tsl_username").attr("style", "border: 1px solid red !important");
             $(".tsl_register_modal #tsl_email").attr("style", "border: 1px solid red !important");
             $(".tsl_register_modal #tsl_password").attr("style", "border: 1px solid red !important");
@@ -159,23 +159,23 @@ jQuery(function($) {
                 success: function(data, textStatus, XMLHTTPRequest) {
                     data = JSON.parse(data);
                     if(data === '0') {
-                        $('.tsl_register_modal .tsl_form_error').show().html("<i class='fa fa-exclamation-triangle'></i>&nbsp;"+tsl_main.username_exists);
+                        $('.tsl_register_modal .tsl_form_error').show().html(tsl_main.error_icon + tsl_main.username_exists);
                         $(".tsl_register_modal #tsl_username").attr("style", "border: 1px solid red !important");
                         return false;
                     } else if(data === '2') {
-                        $('.tsl_register_modal .tsl_form_error').show().html("<i class='fa fa-exclamation-triangle'></i>&nbsp;"+tsl_main.register_fail);
+                        $('.tsl_register_modal .tsl_form_error').show().html(tsl_main.error_icon + tsl_main.register_fail);
                     } else if(data === '3') {
-                        $('.tsl_register_modal .tsl_form_error').show().html("<i class='fa fa-exclamation-triangle'></i>&nbsp;"+tsl_main.email_exists);
+                        $('.tsl_register_modal .tsl_form_error').show().html(tsl_main.error_icon + tsl_main.email_exists);
                         $(".tsl_register_modal #tsl_email").attr("style", "border: 1px solid red !important");
                     } else if(data === '4') {
-                        $('.tsl_register_modal .tsl_form_error').show().html("<i class='fa fa-exclamation-triangle'></i>&nbsp;"+tsl_main.recaptcha_error);
+                        $('.tsl_register_modal .tsl_form_error').show().html(tsl_main.error_icon + tsl_main.recaptcha_error);
                     } else if(data === '5') {
-                        $('.tsl_register_modal .tsl_form_error').show().html("<i class='fa fa-exclamation-triangle'></i>&nbsp;"+tsl_main.email_error);
+                        $('.tsl_register_modal .tsl_form_error').show().html(tsl_main.error_icon + tsl_main.email_error);
                         $(".tsl_register_modal #tsl_email").attr("style", "border: 1px solid red !important");
                     } else {
                         $('.tsl_register_modal').modal('hide');
                         $('.tsl_login_modal').modal('show');
-                        $('.tsl_login_modal .tsl_register_success').show().html("<i class='fa fa-check-circle'></i>&nbsp;&nbsp;"+tsl_main.register_success);
+                        $('.tsl_login_modal .tsl_register_success').show().html(tsl_main.success_icon + tsl_main.register_success);
                     }
                 }
             });
@@ -198,7 +198,7 @@ jQuery(function($) {
         if (user_email === "") {
             errorElement
                 .show()
-                .html("<i class='fa fa-exclamation-triangle'></i>&nbsp;&nbsp;"+tsl_main.email_empty);
+                .html(tsl_main.error_icon + tsl_main.email_empty);
             $("#lost-password-email").css("border", "1px solid red");
             return false;
         }
@@ -231,25 +231,25 @@ jQuery(function($) {
                         // Show success message
                         successElement
                             .show()
-                            .html("<i class='fa fa-check-circle'></i>&nbsp;&nbsp;" + response.data.message);
+                            .html(tsl_main.success_icon + response.data.message);
                     } else if (response.data && response.data.message) {
                         // Show error message from PHP
                         errorElement
                             .show()
-                            .html("<i class='fa fa-exclamation-triangle'></i>&nbsp;&nbsp;" + response.data.message);
+                            .html(tsl_main.error_icon + response.data.message);
                         $("#lost-password-email").css("border", "1px solid red");
                     } else {
                         // Show generic error message if PHP didn't provide a message
                         errorElement
                             .show()
-                            .html("<i class='fa fa-exclamation-triangle'></i>&nbsp;&nbsp;" + tsl_main.unexpected_error);
+                            .html(tsl_main.error_icon + tsl_main.unexpected_error);
                     }
                 },
                 error: function () {
                     // Handle AJAX error
                     errorElement
                         .show()
-                        .html("<i class='fa fa-exclamation-triangle'></i>&nbsp;&nbsp;" + tsl_main.unexpected_error);
+                        .html(tsl_main.error_icon + tsl_main.unexpected_error);
                 }
             });
         }
@@ -269,14 +269,14 @@ jQuery(function($) {
         if (!password || password.length < 12) {
             errorElement
                 .show()
-                .html("<i class='fa fa-exclamation-triangle'></i>&nbsp;&nbsp;" + tsl_main.short_pass);
+                .html(tsl_main.error_icon + tsl_main.short_pass);
             return false;
         }
     
         if (!key || !login) {
             errorElement
                 .show()
-                .html("<i class='fa fa-exclamation-triangle'></i>&nbsp;&nbsp;" + tsl_main.invalid_reset);
+                .html(tsl_main.error_icon + tsl_main.invalid_reset);
             return false;
         }
     
@@ -295,7 +295,7 @@ jQuery(function($) {
                 if (response.success) {
                     successElement
                         .show()
-                        .html("<i class='fa fa-check-circle'></i>&nbsp;&nbsp;" + response.data.message);
+                        .html(tsl_main.success_icon + response.data.message);
 
                     // Redirect after 2 seconds
                     setTimeout(function () {
@@ -304,17 +304,17 @@ jQuery(function($) {
                 } else if (response.data && response.data.message) {
                     errorElement
                         .show()
-                        .html("<i class='fa fa-exclamation-triangle'></i>&nbsp;&nbsp;" + response.data.message);
+                        .html(tsl_main.error_icon + response.data.message);
                 } else {
                     errorElement
                         .show()
-                        .html("<i class='fa fa-exclamation-triangle'></i>&nbsp;&nbsp;" + tsl_main.unexpected_error);
+                        .html(tsl_main.error_icon + tsl_main.unexpected_error);
                 }
             },
             error: function () {
                 errorElement
                     .show()
-                    .html("<i class='fa fa-exclamation-triangle'></i>&nbsp;&nbsp;" + tsl_main.unexpected_error);
+                    .html(tsl_main.error_icon + tsl_main.unexpected_error);
             },
         });
     });    

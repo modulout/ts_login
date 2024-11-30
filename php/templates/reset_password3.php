@@ -11,7 +11,7 @@
                 <div class="tsl_inside_content">
                     <div class="modal-header">
                         <h4 class="modal-title">
-                            <i class="fa fa-user"></i>&nbsp;
+                            <?php echo (get_option("tsl_reset_pass_icon", "") != "") ? get_option("tsl_reset_pass_icon", "")."&nbsp;" : ""; ?>
                             <?php esc_html_e("Reset password", "tipster_script_login"); ?>  
                         </h4>
                         <?php if($recaptcha_status == "1") : ?>

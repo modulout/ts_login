@@ -25,7 +25,8 @@ class Tsl_login_register extends WP_Widget {
             <span class="tsl_login_form_header__logged js--tsl-logged-show">
                 <?php if($logout_value == 1) : ?>
                     <a href="<?php echo wp_logout_url(home_url()); ?>" class="tsl_login_form_header__logged-btn btn btn-secondary">
-                        <i class="fa fa-sign-out"></i>&nbsp;<?php esc_html_e("Log out", "tipster_script_login"); ?>
+                        <?php echo (get_option("tsl_logout_icon", "") != "") ? get_option("tsl_logout_icon", "")."&nbsp;" : ""; ?>
+                        <?php esc_html_e("Log out", "tipster_script_login"); ?>
                     </a>
                 <?php else : ?>
                     <i class="fa fa-user"></i>&nbsp;<?php echo $current_user->display_name; ?>
@@ -42,12 +43,12 @@ class Tsl_login_register extends WP_Widget {
         else : 
             ?>
             <span class="tsl_login_form_header__login js--tsl-login-popup">
-                <i class="fa fa-lock"></i>&nbsp;
+                <?php echo (get_option("tsl_login_icon", "") != "") ? get_option("tsl_login_icon", "")."&nbsp;" : ""; ?>
                 <?php esc_attr_e("Login", "tipster_script_login"); ?>
             </span>
             <span class="tsl_login_form_header__separator">&nbsp;/&nbsp;</span>
             <span class="tsl_login_form_header__register js--tsl-register-popup">
-                <i class="fa fa-user-plus"></i>&nbsp;
+                <?php echo (get_option("tsl_register_icon", "") != "") ? get_option("tsl_register_icon", "")."&nbsp;" : ""; ?>
                 <?php esc_attr_e("Register", "tipster_script_login"); ?>
             </span>       
             <?php

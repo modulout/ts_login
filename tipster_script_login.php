@@ -56,6 +56,8 @@ function tsl_include_style_script() {
         'unexpected_error' => esc_html__("An unexpected error occurred. Please try again.", "tipster_script_login"),
         'short_pass'       => esc_html__("Password must be at least 12 characters long.", "tipster_script_login"),
         'invalid_reset'    => esc_html__("Invalid reset link. Please try again.", "tipster_script_login"),
+        'success_icon'     => (get_option("tsl_success_icon", "") != "") ? get_option("tsl_success_icon", "")."&nbsp;" : "",
+        'error_icon'       => (get_option("tsl_error_icon", "") != "") ? get_option("tsl_error_icon", "")."&nbsp;" : "",
     ]);
     $style = get_option('ts_style', 'style-blue');
     if($style == "style-custom") {
