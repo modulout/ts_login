@@ -33,7 +33,7 @@ function tsl_login_form() {
 function tsl_login_user_helper($info) {
     $user = wp_signon($info, false);
     if (is_wp_error($user)) {
-        echo json_encode(['error' => $user->get_error_message()]);
+        echo wp_json_encode("0");
     } else {
         wp_set_current_user($user->ID);
         wp_set_auth_cookie($user->ID, isset($_POST['remember']));
