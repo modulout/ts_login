@@ -4,7 +4,7 @@ Plugin Name: TS login
 Plugin URI: https://github.com/modulout/ts_login
 Description: With the TS login plugin, your users can log in or/and register from the front page (not needed to go to wp-admin anymore).
 Author: Modulout
-Version: 1.0.3
+Version: 1.0.4
 Author URI: https://www.modulout.com
 */
 if(!defined('WPINC')) {
@@ -27,6 +27,19 @@ function tsl_admin_style_js() {
 add_action('admin_enqueue_scripts', 'tsl_admin_style_js');
 
 function tsl_include_style_script() {
+    if (is_plugin_active('polylang/polylang.php')) {
+        // Polylang is active, return language-specific home URL
+        $current_url = pll_home_url();
+    } else {
+        // Polylang is not active, return the default home URL
+        $current_url = home_url('/');
+    }
+
+    $register_redirect_url = add_query_arg([
+        'popup' => 'tsl-login',
+        'message' => 'registration-success',
+    ], $current_url);
+
     //Google recaptcha
     $site_key = get_option("tsl_recaptcha_site_key", "");
     $recaptcha_status = get_option("tsl_recaptcha_enable", "0");
@@ -40,24 +53,25 @@ function tsl_include_style_script() {
     wp_enqueue_style('tsl-main', TSL_URL.'assets/css/main.css');
     wp_enqueue_script("tsl-main", TSL_URL.'assets/js/main.js', array('jquery'));
     wp_localize_script('tsl-main', 'tsl_main', [
-        'ajaxurl'          => admin_url('admin-ajax.php'),
-        'site_key'         => $site_key,
-        'recaptcha_status' => $recaptcha_status,
-        'fields_empty'     => esc_html__("The username or password field is empty!", "tipster_script_login"),
-        'fields_wrong'     => esc_html__("Incorrect username or password please try again!", "tipster_script_login"),
-        'rfields_empty'    => esc_html__("The username or e-mail or password field is empty!", "tipster_script_login"),
-        'username_exists'  => esc_html__("The username already exists!", "tipster_script_login"),
-        'email_exists'     => esc_html__("The email already exists!", "tipster_script_login"),
-        'register_fail'    => esc_html__("Registration failed! Please try again.", "tipster_script_login"),
-        'register_success' => esc_html__("Registration was successful. You can log in.", "tipster_script_login"),
-        'recaptcha_error'  => esc_html__("Something went wrong. Please try again later.", "tipster_script_login"),
-        'email_error'      => esc_html__("Invalid email format. Please enter a valid email address.", "tipster_script_login"),
-        'email_empty'      => esc_html__("Please provide an email address or username.", "tipster_script_login"),
-        'unexpected_error' => esc_html__("An unexpected error occurred. Please try again.", "tipster_script_login"),
-        'short_pass'       => esc_html__("Password must be at least 12 characters long.", "tipster_script_login"),
-        'invalid_reset'    => esc_html__("Invalid reset link. Please try again.", "tipster_script_login"),
-        'success_icon'     => (get_option("tsl_success_icon", "") != "") ? get_option("tsl_success_icon", "")."&nbsp;" : "",
-        'error_icon'       => (get_option("tsl_error_icon", "") != "") ? get_option("tsl_error_icon", "")."&nbsp;" : "",
+        'ajaxurl'           => admin_url('admin-ajax.php'),
+        'register_redirect' => $register_redirect_url,
+        'site_key'          => $site_key,
+        'recaptcha_status'  => $recaptcha_status,
+        'fields_empty'      => esc_html__("The username or password field is empty!", "tipster_script_login"),
+        'fields_wrong'      => esc_html__("Incorrect username or password please try again!", "tipster_script_login"),
+        'rfields_empty'     => esc_html__("The username or e-mail or password field is empty!", "tipster_script_login"),
+        'username_exists'   => esc_html__("The username already exists!", "tipster_script_login"),
+        'email_exists'      => esc_html__("The email already exists!", "tipster_script_login"),
+        'register_fail'     => esc_html__("Registration failed! Please try again.", "tipster_script_login"),
+        'register_success'  => esc_html__("Registration was successful. You can log in.", "tipster_script_login"),
+        'recaptcha_error'   => esc_html__("Something went wrong. Please try again later.", "tipster_script_login"),
+        'email_error'       => esc_html__("Invalid email format. Please enter a valid email address.", "tipster_script_login"),
+        'email_empty'       => esc_html__("Please provide an email address or username.", "tipster_script_login"),
+        'unexpected_error'  => esc_html__("An unexpected error occurred. Please try again.", "tipster_script_login"),
+        'short_pass'        => esc_html__("Password must be at least 12 characters long.", "tipster_script_login"),
+        'invalid_reset'     => esc_html__("Invalid reset link. Please try again.", "tipster_script_login"),
+        'success_icon'      => (get_option("tsl_success_icon", "") != "") ? get_option("tsl_success_icon", "")."&nbsp;" : "",
+        'error_icon'        => (get_option("tsl_error_icon", "") != "") ? get_option("tsl_error_icon", "")."&nbsp;" : "",
     ]);
     $style = get_option('ts_style', 'style-blue');
     if($style == "style-custom") {

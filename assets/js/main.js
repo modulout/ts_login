@@ -9,6 +9,7 @@ jQuery(function($) {
 
     // Check if the "popup" parameter exists in the URL
     var popup = getUrlParameter('popup');
+    var message = getUrlParameter("message");
 
     // If the "popup" parameter matches "tsl-reset-password", open the modal
     if (popup === 'tsl-reset-password') {
@@ -18,6 +19,13 @@ jQuery(function($) {
     if (popup === 'tsl-login') {
         $('.tsl_reset_pass_modal').modal('hide');
         $('.tsl_login_modal').modal('show');
+
+        if (message === "registration-success") {
+            // Show the success message
+            $(".tsl_login_modal .tsl_register_success")
+                .show()
+                .html(tsl_main.success_icon + tsl_main.register_success);
+        }
     }
 
     if (popup === 'tsl-register') {
@@ -173,9 +181,9 @@ jQuery(function($) {
                         $('.tsl_register_modal .tsl_form_error').show().html(tsl_main.error_icon + tsl_main.email_error);
                         $(".tsl_register_modal #tsl_email").attr("style", "border: 1px solid red !important");
                     } else {
-                        $('.tsl_register_modal').modal('hide');
-                        $('.tsl_login_modal').modal('show');
-                        $('.tsl_login_modal .tsl_register_success').show().html(tsl_main.success_icon + tsl_main.register_success);
+                        if (tsl_main.register_redirect && tsl_main.register_redirect !== '') {
+                            window.location.href = tsl_main.register_redirect;
+                        }
                     }
                 }
             });
