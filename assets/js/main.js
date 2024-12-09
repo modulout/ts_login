@@ -120,7 +120,13 @@ jQuery(function($) {
                         $(".tsl_login_modal #user_pass").attr("style", "border: 1px solid red !important");
                         return false;
                     } else {
-                        document.location.reload();
+                        if (window.location.href.indexOf('popup=tsl-login') > -1) {
+                            // Redirect to the homepage
+                            window.location.href = '/';
+                        } else {
+                            // Reload the current page
+                            document.location.reload();
+                        }
                     }
                 }
             });
